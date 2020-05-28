@@ -1,23 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hacknu2/faculty/createproject.dart';
+import 'dart:ui';
 
-class FacultyDashboard extends StatefulWidget {
+class StudentDashBoard extends StatefulWidget {
   @override
-  _FacultyDashboard createState() => _FacultyDashboard();
+  _StudentDashBoardState createState() => _StudentDashBoardState();
 }
 
-class _FacultyDashboard extends State<FacultyDashboard> {
+class _StudentDashBoardState extends State<StudentDashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Center(
-          child: Text(
-            'Faculty Dashboard',
-            style: TextStyle(color: Colors.black, fontSize: 30.0),
-          ),
-        ),
+            child: Text(
+          'Student Dashboard',
+          style: TextStyle(color: Colors.black, fontSize: 30.0),
+        )),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,17 +33,9 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                     borderRadius: BorderRadius.circular(30.0),
                     side: BorderSide(color: Colors.red),
                   ),
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CreateProject()));
-                    });
-
-                  },
+                  onPressed: () {},
                   child: Text(
-                    "Create Project",
+                    "Join Project",
                     style: TextStyle(
                       fontSize: 38.0,
                       fontStyle: FontStyle.italic,
@@ -100,33 +92,6 @@ class _FacultyDashboard extends State<FacultyDashboard> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({
-    @required this.colour,
-    this.cardChild,
-    this.onPress,
-  });
-
-  final Color colour;
-  final Widget cardChild;
-  final Function onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPress,
-      child: Container(
-        child: cardChild,
-        margin: EdgeInsets.all(40),
-        decoration: BoxDecoration(
-          color: colour,
-          borderRadius: BorderRadius.circular(10),
-        ),
       ),
     );
   }
