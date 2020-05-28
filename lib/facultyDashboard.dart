@@ -32,14 +32,14 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                     //function
                   },
                   child: ReusableCard(
-                    colour: Color(0xFF111328),
+                    colour: Colors.lightBlueAccent,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           "Create Project",
                           style: TextStyle(
-                            color: Color(0xFF8D8E98),
+                            color: Colors.black,
                             fontSize: 30.0,
                           ),
                         ),
@@ -61,14 +61,14 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                     //function
                   },
                   child: ReusableCard(
-                    colour: Color(0xFF111328),
+                    colour: Colors.lightBlueAccent,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           "View Projects",
                           style: TextStyle(
-                            color: Color(0xFF8D8E98),
+                            color: Colors.black,
                             fontSize: 30.0,
                           ),
                         ),
@@ -90,14 +90,14 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                     //function
                   },
                   child: ReusableCard(
-                    colour: Color(0xFF111328),
+                    colour: Colors.lightBlueAccent,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           "History",
                           style: TextStyle(
-                            color: Color(0xFF8D8E98),
+                            color: Colors.black,
                             fontSize: 30.0,
                           ),
                         ),
