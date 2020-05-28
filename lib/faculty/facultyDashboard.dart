@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hacknu2/faculty/createproject.dart';
 
 
 class FacultyDashboard extends StatefulWidget {
   @override
   _FacultyDashboard createState() => _FacultyDashboard();
 }
-
 class _FacultyDashboard extends State<FacultyDashboard> {
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,10 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                 child: GestureDetector(
                   onTap: (){
                     //function
+                    setState(() {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateProject()));
+                    });
+
                   },
                   child: ReusableCard(
                     colour: Colors.lightBlueAccent,
@@ -122,8 +126,6 @@ class _FacultyDashboard extends State<FacultyDashboard> {
         ));
   }
 }
-
-
 class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.colour, this.cardChild, this.onPress,});
 

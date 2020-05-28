@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'faculty/facultyDashboard.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: "hello",),
     );
   }
 }
