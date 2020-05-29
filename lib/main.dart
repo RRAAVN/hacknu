@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'faculty/facultyDashboard.dart';
 import 'student/studentdashboard.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
 
       ),
+      home: StudentDashBoard(),
       //home: FacultyDashboard(),
-      home: MyHomePage(title: "hello",),
+      //home: MyHomePage(title: "hello",),
     );
   }
 }
