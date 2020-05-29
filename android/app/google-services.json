@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "950441971509",
+    "firebase_url": "https://hacknu-c2e30.firebaseio.com",
+    "project_id": "hacknu-c2e30",
+    "storage_bucket": "hacknu-c2e30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950441971509:android:e4ef38cabb36d0ff05067c",
+        "android_client_info": {
+          "package_name": "com.example.hacknu2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950441971509-5d90gndd31a24ujdakb4nrd6397dmo4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD918NX-ms9GJ6Am8KM7VUBgSoKqyLcq-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950441971509-5d90gndd31a24ujdakb4nrd6397dmo4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

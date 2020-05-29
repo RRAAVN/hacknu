@@ -242,7 +242,7 @@ class EntryBox extends StatelessWidget {
 
 class headLabel extends StatelessWidget {
   final String value;
-  headLabel({String this.value});
+  headLabel({this.value});
 
   @override
   Widget build(BuildContext context) {
