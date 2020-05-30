@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hacknu2/faculty/facultyDashboard.dart';
 import 'package:hacknu2/screens/home_page.dart';
 import 'package:hacknu2/screens/login_signup_page.dart';
 import 'package:hacknu2/services/authentication.dart';
@@ -77,11 +78,7 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return new HomePage(
-            userId: _userId,
-            auth: widget.auth,
-            logoutCallback: logoutCallback,
-          );
+          return FacultyDashboard();
         } else
           return buildWaitingScreen();
         break;

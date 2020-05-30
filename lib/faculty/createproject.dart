@@ -90,7 +90,12 @@ class _CreateProjectState extends State<CreateProject> {
     var oldEntry = _projectList.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
- }
+
+    setState(() {
+      _projectList[_projectList.indexOf(oldEntry)] =
+          ProjectModel.fromSnapShot(event.snapshot);
+    });
+  }
 
 onEntryAdded(Event event) {
     setState(() {
@@ -105,6 +110,109 @@ onEntryAdded(Event event) {
       teamDistribution = TeamDistribution.Student;
   }
 
+
+  addNewTodo(String todoItem) {
+    if (todoItem.length > 0) {
+      ProjectModel project = new ProjectModel();
+      _database.reference().child("projects").push().set(project.toMap());
+    }
+  }
+
+  updateTodo(ProjectModel project) {
+    //Toggle completed
+   // todo.completed = !todo.completed;
+    if (project != null) {
+      _database.reference().child("todo").child(project.key).set(project.toMap());
+    }
+  }
+
+  deleteTodo(String todoId, int index) {
+    _database.reference().child("todo").child(todoId).remove().then((_) {
+      print("Delete $todoId successful");
+      setState(() {
+        _projectList.removeAt(index);
+      });
+    });
+  }
+
+
+  showAddTodoDialog(BuildContext context) async {
+    await showDialog<String>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: new Container(),
+            actions: <Widget>[
+              new FlatButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+              new FlatButton(
+                  child: const Text('Save'),
+                  onPressed: () {
+                 //   addNewTodo(_textEditingController.text.toString());
+                    Navigator.pop(context);
+                  })
+            ],
+          );
+        });
+  }
+
+
+/** 
+
+Widget showTodoList() {
+    if (_projectList.length > 0) {
+      return ListView.builder(
+          shrinkWrap: true,
+          itemCount: _projectList.length,
+          itemBuilder: (BuildContext context, int index) {
+            String todoId = _projectList[index].key;
+            String subject = _projectList[index].subject;
+            bool completed = _projectList[index].completed;
+            String userId = _projectList[index].userId;
+            return Dismissible(
+              key: Key(todoId),
+              background: Container(color: Colors.red),
+              onDismissed: (direction) async {
+                deleteTodo(todoId, index);
+              },
+              child: ListTile(
+                title: Text(
+                  subject,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                trailing: IconButton(
+                    icon: (completed)
+                        ? Icon(
+                            Icons.done_outline,
+                            color: Colors.green,
+                            size: 20.0,
+                          )
+                        : Icon(Icons.done, color: Colors.grey, size: 20.0),
+                    onPressed: () {
+                      updateTodo(_projectList[index]);
+                    }),
+              ),
+            );
+          });
+    } else {
+      return Center(
+          child: Text(
+        "Welcome. Your list is empty",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 30.0),
+      ));
+    }
+  }
+
+  */
+
+
+
+
+  
 //  void selectGroup(String select) {
 //    if (select == 'Same Section')
 //      group = Group.SameSection;
