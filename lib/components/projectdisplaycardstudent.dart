@@ -370,7 +370,7 @@ class _StudentProjectScreenState extends State<StudentProjectScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(5),
                           child: Text(
-                              "This is a Cs122 profblsjgbskfblsfkjbsflkjsbsfjbsfkjsjfl fbsfjbsofjbofwofwnownfsflkfnslkfnsofnk onosfnosifnofinofiwnfownfowifnoifnwoifnwofinwofinwofn nofnofnwofnwofknwokfnwokfnwfkfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddject........skjgbsofsfubajb bsifuwfibf isegbikjeowjb  wrjbwjbw riwb wo worjbwerojbw o ojwbojb o otoihrr pwhroh....................................................................."),
+                              "This is a CS122 profblsjgbskfblsfkjbsflkjsbsfjbsfkjsjfl fbsfjbsofjbofwofwnownfsflkfnslkfnsofnk onosfnosifnofinofiwnfownfowifnoifnwoifnwofinwofinwofn nofnofnwofnwofknwokfnwokfnwfkfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddject........skjgbsofsfubajb bsifuwfibf isegbikjeowjb  wrjbwjbw riwb wo worjbwerojbw o ojwbojb o otoihrr pwhroh....................................................................."),
                         ))),
                 Padding(
                   padding: EdgeInsets.all(10),
@@ -378,7 +378,9 @@ class _StudentProjectScreenState extends State<StudentProjectScreen> {
                     children: <Widget>[
                       Expanded(
                         child: RoundedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            print("Help");
+                          },
                           buttonTitle: "Create Team",
                           color: Colors.lightBlueAccent,
                         ),

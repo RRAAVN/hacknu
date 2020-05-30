@@ -46,7 +46,7 @@ class _JoinProjectState extends State<JoinProject> {
          */
         child: ListView(
           children: <Widget>[
-            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/3/2020",endDate: "2/2/2020",),
             ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
             ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
             ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
