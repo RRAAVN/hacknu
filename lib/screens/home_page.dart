@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:hacknu2/models/todo.dart';
+import 'package:hacknu2/models/studentTodo.dart';
 import 'dart:async';
 
 import 'package:hacknu2/services/authentication.dart';
