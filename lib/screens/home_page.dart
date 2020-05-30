@@ -18,9 +18,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //When list is fetched from the firebase we will store it in local list
+
   List<Todo> _todoList;
 
+  //using this to get access to the Firebase instance
   final FirebaseDatabase _database = FirebaseDatabase.instance;
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final _textEditingController = TextEditingController();

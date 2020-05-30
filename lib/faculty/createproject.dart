@@ -1,10 +1,24 @@
+import 'dart:async';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:hacknu2/models/projectModel.dart';
+import 'package:hacknu2/models/widgets.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+
+import '../services/authentication.dart';
 
 
 // ignore: camel_case_types
 class CreateProject extends StatefulWidget {
+
+  CreateProject({Key key, this.auth, this.userId, this.logoutCallback})
+      : super(key: key);
+
+  final BaseAuth auth;
+  final VoidCallback logoutCallback;
+  final String userId;
   @override
   _CreateProjectState createState() => _CreateProjectState();
 }
@@ -28,6 +42,61 @@ class _CreateProjectState extends State<CreateProject> {
   DateTime _startDateTime, _endDateTime;
   int startDate, endDate;
   String maxNumberStudents, minNumberStudents;
+
+
+//We will store all the projects in a local list variables
+  List<ProjectModel> _projectList;
+  
+  final FirebaseDatabase _database = FirebaseDatabase.instance;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final _nameTextEditingController = TextEditingController();
+  final _descriptionTextEditingController = TextEditingController();
+  final _minTextEditingController = TextEditingController();
+  final _maxTextEditingController = TextEditingController();
+
+  StreamSubscription<Event> _onTodoAddedSubscription;
+  StreamSubscription<Event> _onTodoChangedSubscription;
+
+  Query _projectQuery;
+
+
+  @override
+  void initState() {
+    
+     _projectList = new List();
+    _projectQuery = _database
+        .reference()
+        .child("${widget.userId} projects")
+        .orderByChild("userId")
+        .equalTo(widget.userId);
+    _onTodoAddedSubscription = _projectQuery.onChildAdded.listen(onEntryAdded);
+    _onTodoChangedSubscription =
+        _projectQuery.onChildChanged.listen(onEntryChanged);
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _onTodoAddedSubscription.cancel();
+    _onTodoChangedSubscription.cancel();
+    super.dispose();
+  }
+
+
+ onEntryChanged(Event event) {
+    var oldEntry = _projectList.singleWhere((entry) {
+      return entry.key == event.snapshot.key;
+    });
+ }
+
+onEntryAdded(Event event) {
+    setState(() {
+      _projectList.add(ProjectModel.fromSnapShot(event.snapshot));
+    });
+  }
 
   void selectTeamDistribution(String select) {
     if (select == 'Random Team Distribution')
@@ -240,18 +309,4 @@ class EntryBox extends StatelessWidget {
   }
 }
 
-class headLabel extends StatelessWidget {
-  final String value;
-  headLabel({this.value});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        value,
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
