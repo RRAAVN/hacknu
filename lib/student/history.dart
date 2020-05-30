@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hacknu2/components/projectdisplaycardstudent.dart';
 
 class History extends StatefulWidget {
   @override
@@ -11,11 +12,10 @@ class _HistoryState extends State<History> {
     return Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
-        title: Text('History',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 30.0
-          ),),
+        title: Text(
+          'History',
+          style: TextStyle(color: Colors.black, fontSize: 30.0),
+        ),
         flexibleSpace: Container(
           /*
           decoration: new BoxDecoration(
@@ -33,9 +33,8 @@ class _HistoryState extends State<History> {
            */
         ),
       ),
-      body:
-        Container(
-          /*
+      body: Container(
+        /*
             decoration: BoxDecoration(
             gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -45,126 +44,19 @@ class _HistoryState extends State<History> {
             ),
 
            */
-          child: ListView(
-            children: <Widget>[
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: new SizedBox(
-                    width: 400,
-                    height: 140,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        side: BorderSide(color: Colors.red),
-                      ),
-                      onPressed: () {},
-                      child: Text("...",style: TextStyle(
-                        fontSize: 38.0, fontStyle: FontStyle.italic,
-                      ),),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: new SizedBox(
-                    width: 400,
-                    height: 140,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        side: BorderSide(color: Colors.red),
-                      ),
-                      onPressed: () {},
-                      child: Text("...",style: TextStyle(
-                        fontSize: 38.0, fontStyle: FontStyle.italic,
-                      ),),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: new SizedBox(
-                    width: 400,
-                    height: 140,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        side: BorderSide(color: Colors.red),
-                      ),
-                      onPressed: () {},
-                      child: Text("...",style: TextStyle(
-                        fontSize: 38.0, fontStyle: FontStyle.italic,
-                      ),),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: new SizedBox(
-                    width: 400,
-                    height: 140,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        side: BorderSide(color: Colors.red),
-                      ),
-                      onPressed: () {},
-                      child: Text("...",style: TextStyle(
-                        fontSize: 38.0, fontStyle: FontStyle.italic,
-                      ),),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: new SizedBox(
-                    width: 400,
-                    height: 140,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        side: BorderSide(color: Colors.red),
-                      ),
-                      onPressed: () {},
-                      child: Text("...",style: TextStyle(
-                        fontSize: 38.0, fontStyle: FontStyle.italic,
-                      ),),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: new SizedBox(
-                    width: 400,
-                    height: 140,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                        side: BorderSide(color: Colors.red),
-                      ),
-                      onPressed: () {},
-                      child: Text("...",style: TextStyle(
-                        fontSize: 38.0, fontStyle: FontStyle.italic,
-                      ),),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          ),
-        );
+        child: ListView(
+          children: <Widget>[
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            ProjectDisplayCard(courseName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
 
+          ],
+        ),
+      ),
+    );
   }
 }
