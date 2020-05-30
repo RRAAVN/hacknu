@@ -1,7 +1,17 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hacknu2/faculty/createproject.dart';
+import 'package:hacknu2/services/authentication.dart';
 
 class FacultyDashboard extends StatefulWidget {
+
+  FacultyDashboard({Key key, this.auth, this.userId, this.logoutCallback})
+      : super(key: key);
+
+  final BaseAuth auth;
+  final VoidCallback logoutCallback;
+  final String userId;
   @override
   _FacultyDashboard createState() => _FacultyDashboard();
 }
@@ -19,8 +29,8 @@ class _FacultyDashboard extends State<FacultyDashboard> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
+        
         children: <Widget>[
           Center(
             child: Padding(
@@ -38,7 +48,7 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CreateProject()));
+                              builder: (context) => CreateProject(auth: widget.auth,userId: widget.userId,logoutCallback: widget.logoutCallback,)));
                     });
 
                   },
@@ -99,9 +109,43 @@ class _FacultyDashboard extends State<FacultyDashboard> {
               ),
             ),
           ),
+
+           Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: new SizedBox(
+                width: 400,
+                height: 140,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    side: BorderSide(color: Colors.red),
+                  ),
+                  onPressed: ()=>signOut(),
+                  child: Text(
+                    "Log Out",
+                    style: TextStyle(
+                      fontSize: 38.0,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
+  }
+
+
+  signOut() async {
+    try {
+      await widget.auth.signOut();
+      widget.logoutCallback();
+    } catch (e) {
+      print(e);
+    }
   }
 }
 

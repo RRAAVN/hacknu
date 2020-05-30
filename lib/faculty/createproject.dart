@@ -23,14 +23,7 @@ class CreateProject extends StatefulWidget {
   _CreateProjectState createState() => _CreateProjectState();
 }
 
-enum TeamDistribution {
-  Random,
-  Student,
-}
-enum Group {
-  SameSection,
-  CrossSection,
-}
+
 
 // ignore: camel_case_types
 class _CreateProjectState extends State<CreateProject> {
@@ -51,7 +44,7 @@ class _CreateProjectState extends State<CreateProject> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final _nameTextEditingController = TextEditingController();
+  final _projectNameTextEditingController = TextEditingController();
   final _descriptionTextEditingController = TextEditingController();
   final _minTextEditingController = TextEditingController();
   final _maxTextEditingController = TextEditingController();
@@ -68,7 +61,7 @@ class _CreateProjectState extends State<CreateProject> {
      _projectList = new List();
     _projectQuery = _database
         .reference()
-        .child("${widget.userId} projects")
+        .child("projects")
         .orderByChild("userId")
         .equalTo(widget.userId);
     _onTodoAddedSubscription = _projectQuery.onChildAdded.listen(onEntryAdded);
@@ -111,9 +104,8 @@ onEntryAdded(Event event) {
   }
 
 
-  addNewTodo(String todoItem) {
-    if (todoItem.length > 0) {
-      ProjectModel project = new ProjectModel();
+  addNewProject(ProjectModel project) {
+    if (project != null) {
       _database.reference().child("projects").push().set(project.toMap());
     }
   }
@@ -122,7 +114,7 @@ onEntryAdded(Event event) {
     //Toggle completed
    // todo.completed = !todo.completed;
     if (project != null) {
-      _database.reference().child("todo").child(project.key).set(project.toMap());
+      _database.reference().child("projects").child(project.key).set(project.toMap());
     }
   }
 
@@ -212,7 +204,7 @@ Widget showTodoList() {
 
 
 
-  
+
 //  void selectGroup(String select) {
 //    if (select == 'Same Section')
 //      group = Group.SameSection;
@@ -237,7 +229,7 @@ Widget showTodoList() {
               value: 'Enter a Project Name',
             ),
             EntryBox(
-              valuename: projectName,
+              textEditingController: _projectNameTextEditingController,
               placeHolder: 'Project Name Here',
             ),
             headLabel(
@@ -247,7 +239,7 @@ Widget showTodoList() {
               children: <Widget>[
                 Expanded(
                   child: EntryBox(
-                      valuename: minNumberStudents,
+                      textEditingController: _minTextEditingController,
                       placeHolder: 'Min Number of Students',
                       keyInput: TextInputType.phone),
                 ),
@@ -256,7 +248,7 @@ Widget showTodoList() {
                 ),
                 Expanded(
                   child: EntryBox(
-                      valuename: maxNumberStudents,
+                      textEditingController: _maxTextEditingController,
                       placeHolder: 'Max Number of Students',
                       keyInput: TextInputType.phone),
                 ),
@@ -302,7 +294,7 @@ Widget showTodoList() {
               value: 'Enter a brief Project Description',
             ),
             EntryBox(
-              valuename: projectDesc,
+              textEditingController: _descriptionTextEditingController,
               placeHolder: 'Enter a Short Description',
               keyInput: TextInputType.multiline,
             ),
@@ -363,12 +355,17 @@ Widget showTodoList() {
               color: Colors.blue,
               child: FlatButton(
                 onPressed: (){
-
+                  projectName = _projectNameTextEditingController.text;
+                  projectDesc = _descriptionTextEditingController.text;
+                  minNumberStudents = _minTextEditingController.text;
+                  maxNumberStudents = _maxTextEditingController.text;
                   setState(() {
                     if(projectName == null && minNumberStudents == null && maxNumberStudents == null && projectDesc == null){
                       Alert(context: context, title: "Error", desc: "Fill all the details properly.").show();
                     }else{
                       //set button function
+                      print(projectName);
+                      addNewProject(new ProjectModel(projectName: projectName,projectDescription: projectDesc,minTeam: minNumberStudents,maxTeam: maxNumberStudents,endDate:endDate,startDate: startDate));
                     }
                   });
                 },
@@ -385,36 +382,7 @@ Widget showTodoList() {
   }
 }
 
-class EntryBox extends StatelessWidget {
-  String valuename;
-  final TextInputType keyInput;
-  final String placeHolder;
-  EntryBox(
-      {String this.valuename,
-      String this.placeHolder,
-      TextInputType this.keyInput});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        keyboardType: keyInput,
-        maxLines: keyInput == TextInputType.multiline ? null : 1,
-        decoration: InputDecoration(
-          hintText: placeHolder,
-          labelStyle: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-          border: OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.3),
-          ),
-        ),
-        onChanged: (value) {
-          valuename = value;
-          print(valuename);
-        },
-      ),
-    );
-  }
-}
+
+
 
 
