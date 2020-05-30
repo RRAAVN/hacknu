@@ -1,4 +1,7 @@
+import 'package:firebase_database/firebase_database.dart';
+
 class ProjectModel {
+  String key;
   String projectName;
   int minTeam;
   int maxTeam;
@@ -19,16 +22,17 @@ class ProjectModel {
       this.endDate});
 
 
-  ProjectModel.fromMap(Map<String,dynamic> projectData){
+  ProjectModel.fromSnapShot(DataSnapshot projectData):
 
-    projectName = projectData["projectName"];
-    minTeam = projectData["minTeam"];
-    maxTeam = projectData["maxTeam"];
-    teamDistribution = projectData["teamDistribution"];
-    sectionCriteria= projectData["sectionCriteria"];
-    projectDescription = projectData["projectDescription"];
-    startDate = projectData["startDate"];
-    endDate = projectData["endDate"];
+    key=projectData.key,
+    projectName = projectData.value["projectName"],
+    minTeam = projectData.value["minTeam"],
+    maxTeam = projectData.value["maxTeam"],
+    teamDistribution = projectData.value["teamDistribution"],
+    sectionCriteria= projectData.value["sectionCriteria"],
+    projectDescription = projectData.value["projectDescription"],
+    startDate = projectData.value["startDate"],
+    endDate = projectData.value["endDate"];
 
     Map<String,dynamic> toMap(){
       return {
@@ -43,7 +47,7 @@ class ProjectModel {
       };
     }
   }    
-}
+
 
 enum TeamDistribution { STUDENT_PREFERRED_TEAM, RANDOM_PREFERRED_TEAM }
 enum SectionCriteria { SAME_SECTION, CROSS_SECTION }
