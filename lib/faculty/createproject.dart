@@ -1,10 +1,24 @@
+import 'dart:async';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:hacknu2/models/projectModel.dart';
+import 'package:hacknu2/models/widgets.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+
+import '../services/authentication.dart';
 
 
 // ignore: camel_case_types
 class CreateProject extends StatefulWidget {
+
+  CreateProject({Key key, this.auth, this.userId, this.logoutCallback})
+      : super(key: key);
+
+  final BaseAuth auth;
+  final VoidCallback logoutCallback;
+  final String userId;
   @override
   _CreateProjectState createState() => _CreateProjectState();
 }
@@ -29,6 +43,66 @@ class _CreateProjectState extends State<CreateProject> {
   int startDate, endDate;
   String maxNumberStudents, minNumberStudents;
 
+
+//We will store all the projects in a local list variables
+  List<ProjectModel> _projectList;
+  
+  final FirebaseDatabase _database = FirebaseDatabase.instance;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final _nameTextEditingController = TextEditingController();
+  final _descriptionTextEditingController = TextEditingController();
+  final _minTextEditingController = TextEditingController();
+  final _maxTextEditingController = TextEditingController();
+
+  StreamSubscription<Event> _onTodoAddedSubscription;
+  StreamSubscription<Event> _onTodoChangedSubscription;
+
+  Query _projectQuery;
+
+
+  @override
+  void initState() {
+    
+     _projectList = new List();
+    _projectQuery = _database
+        .reference()
+        .child("${widget.userId} projects")
+        .orderByChild("userId")
+        .equalTo(widget.userId);
+    _onTodoAddedSubscription = _projectQuery.onChildAdded.listen(onEntryAdded);
+    _onTodoChangedSubscription =
+        _projectQuery.onChildChanged.listen(onEntryChanged);
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _onTodoAddedSubscription.cancel();
+    _onTodoChangedSubscription.cancel();
+    super.dispose();
+  }
+
+
+ onEntryChanged(Event event) {
+    var oldEntry = _projectList.singleWhere((entry) {
+      return entry.key == event.snapshot.key;
+    });
+
+    setState(() {
+      _projectList[_projectList.indexOf(oldEntry)] =
+          ProjectModel.fromSnapShot(event.snapshot);
+    });
+  }
+
+onEntryAdded(Event event) {
+    setState(() {
+      _projectList.add(ProjectModel.fromSnapShot(event.snapshot));
+    });
+  }
+
   void selectTeamDistribution(String select) {
     if (select == 'Random Team Distribution')
       teamDistribution = TeamDistribution.Random;
@@ -36,6 +110,109 @@ class _CreateProjectState extends State<CreateProject> {
       teamDistribution = TeamDistribution.Student;
   }
 
+
+  addNewTodo(String todoItem) {
+    if (todoItem.length > 0) {
+      ProjectModel project = new ProjectModel();
+      _database.reference().child("projects").push().set(project.toMap());
+    }
+  }
+
+  updateTodo(ProjectModel project) {
+    //Toggle completed
+   // todo.completed = !todo.completed;
+    if (project != null) {
+      _database.reference().child("todo").child(project.key).set(project.toMap());
+    }
+  }
+
+  deleteTodo(String todoId, int index) {
+    _database.reference().child("todo").child(todoId).remove().then((_) {
+      print("Delete $todoId successful");
+      setState(() {
+        _projectList.removeAt(index);
+      });
+    });
+  }
+
+
+  showAddTodoDialog(BuildContext context) async {
+    await showDialog<String>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: new Container(),
+            actions: <Widget>[
+              new FlatButton(
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+              new FlatButton(
+                  child: const Text('Save'),
+                  onPressed: () {
+                 //   addNewTodo(_textEditingController.text.toString());
+                    Navigator.pop(context);
+                  })
+            ],
+          );
+        });
+  }
+
+
+/** 
+
+Widget showTodoList() {
+    if (_projectList.length > 0) {
+      return ListView.builder(
+          shrinkWrap: true,
+          itemCount: _projectList.length,
+          itemBuilder: (BuildContext context, int index) {
+            String todoId = _projectList[index].key;
+            String subject = _projectList[index].subject;
+            bool completed = _projectList[index].completed;
+            String userId = _projectList[index].userId;
+            return Dismissible(
+              key: Key(todoId),
+              background: Container(color: Colors.red),
+              onDismissed: (direction) async {
+                deleteTodo(todoId, index);
+              },
+              child: ListTile(
+                title: Text(
+                  subject,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                trailing: IconButton(
+                    icon: (completed)
+                        ? Icon(
+                            Icons.done_outline,
+                            color: Colors.green,
+                            size: 20.0,
+                          )
+                        : Icon(Icons.done, color: Colors.grey, size: 20.0),
+                    onPressed: () {
+                      updateTodo(_projectList[index]);
+                    }),
+              ),
+            );
+          });
+    } else {
+      return Center(
+          child: Text(
+        "Welcome. Your list is empty",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 30.0),
+      ));
+    }
+  }
+
+  */
+
+
+
+
+  
 //  void selectGroup(String select) {
 //    if (select == 'Same Section')
 //      group = Group.SameSection;
@@ -240,18 +417,4 @@ class EntryBox extends StatelessWidget {
   }
 }
 
-class headLabel extends StatelessWidget {
-  final String value;
-  headLabel({this.value});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        value,
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
