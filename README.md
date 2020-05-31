@@ -1,4 +1,4 @@
-# HeraPheri | A Team Management Application
+# HeraPheri | A Team Management Application For Faculty and Student
 
 
 Spcae for Screen Shots
