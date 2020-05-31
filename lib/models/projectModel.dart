@@ -5,9 +5,10 @@ class ProjectModel {
   String projectName;
   String minTeam;
   String maxTeam;
-  //TeamDistribution teamDistribution;
+  TeamDistribution teamDistribution;
   //Group sectionCriteria;
   String projectDescription;
+  String userId;
   int startDate;
   int endDate;
 
@@ -15,9 +16,10 @@ class ProjectModel {
       {this.projectName,
       this.minTeam,
       this.maxTeam,
-     // this.teamDistribution,
+      this.teamDistribution,
       //this.sectionCriteria,
       this.projectDescription,
+      this.userId,
       this.startDate,
       this.endDate});
 
@@ -28,8 +30,9 @@ class ProjectModel {
     projectName = projectData.value["projectName"],
     minTeam = projectData.value["minTeam"],
     maxTeam = projectData.value["maxTeam"],
-   // teamDistribution = projectData.value["teamDistribution"],
+    teamDistribution = projectData.value["teamDistribution"],
     //sectionCriteria= projectData.value["sectionCriteria"],
+    userId = projectData.value["userId"],
     projectDescription = projectData.value["projectDescription"],
     startDate = projectData.value["startDate"],
     endDate = projectData.value["endDate"];
@@ -39,8 +42,9 @@ class ProjectModel {
         "projectName":projectName,
         "minTeam":minTeam,
         "maxTeam":maxTeam,
-       // "teamDistribution":teamDistribution,
+       "teamDistribution":teamDistribution,
         //"sectionCriteria":sectionCriteria,
+        "userId":userId,
         "projectDescription":projectDescription,
         "startDate":startDate,
         "endDate":endDate

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hacknu2/screens/root_page.dart';
 import 'package:hacknu2/services/authentication.dart';
+import 'package:hacknu2/student/studentdashboard.dart';
 
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         theme: new ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: new RootPage(auth: new Auth()));
+        home: new RootPage(auth: new Auth())); 
+        
   }
 }
