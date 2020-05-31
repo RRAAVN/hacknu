@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:hacknu2/faculty/createproject.dart';
+import 'package:hacknu2/screens/faculty_project_list.dart';
 import 'package:hacknu2/services/authentication.dart';
 
 class FacultyDashboard extends StatefulWidget {
@@ -74,7 +75,11 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                     borderRadius: BorderRadius.circular(30.0),
                     side: BorderSide(color: Colors.red),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context){
+                     return FacultyProjects(auth: widget.auth,logoutCallback:widget.logoutCallback,userId: widget.userId,);
+                   })); 
+                  },
                   child: Text(
                     "View Projects",
                     style: TextStyle(

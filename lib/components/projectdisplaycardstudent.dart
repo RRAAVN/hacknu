@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 
 class ProjectDisplayCard extends StatefulWidget {
   ProjectDisplayCard(
-      {@required this.courseName,
+      {@required this.projectName,
       @required this.minStudents,
       @required this.maxStudents,
       @required this.teamDistribution,
       @required this.startDate,
       @required this.endDate,});
-  final String courseName;
+  final String projectName;
   final String minStudents;
   final String maxStudents;
   final String teamDistribution;
@@ -32,7 +32,7 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
         child: new Container(
           child: RaisedButton(
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentProjectScreen(courseName: widget.courseName,minStudents: widget.minStudents,maxStudents: widget.maxStudents,teamDistribution: widget.teamDistribution,startDate: widget.startDate,endDate: widget.endDate,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentProjectScreen(courseName: widget.projectName,minStudents: widget.minStudents,maxStudents: widget.maxStudents,teamDistribution: widget.teamDistribution,startDate: widget.startDate,endDate: widget.endDate,)));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,7 +59,7 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.courseName)),
+                            Expanded(child: Text(widget.projectName)),
                           ],
                         ),
                       ),

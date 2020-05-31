@@ -128,81 +128,6 @@ onEntryAdded(Event event) {
   }
 
 
-  showAddTodoDialog(BuildContext context) async {
-    await showDialog<String>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: new Container(),
-            actions: <Widget>[
-              new FlatButton(
-                  child: const Text('Cancel'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              new FlatButton(
-                  child: const Text('Save'),
-                  onPressed: () {
-                 //   addNewTodo(_textEditingController.text.toString());
-                    Navigator.pop(context);
-                  })
-            ],
-          );
-        });
-  }
-
-
-/** 
-
-Widget showTodoList() {
-    if (_projectList.length > 0) {
-      return ListView.builder(
-          shrinkWrap: true,
-          itemCount: _projectList.length,
-          itemBuilder: (BuildContext context, int index) {
-            String todoId = _projectList[index].key;
-            String subject = _projectList[index].subject;
-            bool completed = _projectList[index].completed;
-            String userId = _projectList[index].userId;
-            return Dismissible(
-              key: Key(todoId),
-              background: Container(color: Colors.red),
-              onDismissed: (direction) async {
-                deleteTodo(todoId, index);
-              },
-              child: ListTile(
-                title: Text(
-                  subject,
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                trailing: IconButton(
-                    icon: (completed)
-                        ? Icon(
-                            Icons.done_outline,
-                            color: Colors.green,
-                            size: 20.0,
-                          )
-                        : Icon(Icons.done, color: Colors.grey, size: 20.0),
-                    onPressed: () {
-                      updateTodo(_projectList[index]);
-                    }),
-              ),
-            );
-          });
-    } else {
-      return Center(
-          child: Text(
-        "Welcome. Your list is empty",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 30.0),
-      ));
-    }
-  }
-
-  */
-
-
-
 
 
 //  void selectGroup(String select) {
@@ -364,8 +289,8 @@ Widget showTodoList() {
                       Alert(context: context, title: "Error", desc: "Fill all the details properly.").show();
                     }else{
                       //set button function
-                      print(projectName);
-                      addNewProject(new ProjectModel(projectName: projectName,projectDescription: projectDesc,minTeam: minNumberStudents,maxTeam: maxNumberStudents,endDate:endDate,startDate: startDate));
+                      print(widget.userId);
+                      addNewProject(new ProjectModel(projectName: projectName,projectDescription: projectDesc,minTeam: minNumberStudents,maxTeam: maxNumberStudents,endDate:endDate,startDate: startDate,userId: widget.userId));
                     }
                   });
                 },
