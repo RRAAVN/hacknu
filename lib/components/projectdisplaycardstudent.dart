@@ -8,27 +8,27 @@ import 'package:flutter/material.dart';
 class ProjectDisplayCard extends StatefulWidget {
   //These are required parameters for the creation of a Project Card
   ProjectDisplayCard(
-      {@required this.projectName,//Name of the Project.
-      @required this.minStudents,//Minimum Number of Students
-      @required this.maxStudents,//Maximum Number of Students
-      @required this.teamDistribution,//Type of Team Distribution: "Random" or "Student preferred"
-      @required this.startDate,//Start Date for the project
-      @required this.endDate,//End Date for the project
+      {@required this.projectName,
+      @required this.minStudents,
+      @required this.maxStudents,
+      @required this.teamDistribution,
+      @required this.startDate,
+      @required this.endDate,
       }
   );
   //Declartion of the class variables which have been used for storing the details of the project
-  final String projectName;
-  final String minStudents;
-  final String maxStudents;
-  final String teamDistribution;
-  final String startDate;
-  final String endDate;
+  final String projectName;//Name of the Project.
+  final String minStudents;//Minimum Number of Students
+  final String maxStudents;//Maximum Number of Students
+  final String teamDistribution;//Type of Team Distribution: "Random" or "Student preferred"
+  final String startDate;//Start Date for the project
+  final String endDate;//End Date for the project
 
 
   @override
   _ProjectDisplayCardState createState() => _ProjectDisplayCardState();
 }
-
+//Returns a customized Card with all the project details in it.
 class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
   @override
   Widget build(BuildContext context) {
