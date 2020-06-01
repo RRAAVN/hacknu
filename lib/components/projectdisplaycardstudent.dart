@@ -2,15 +2,21 @@
 import 'roundedbutton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+//Each project will be represented as a card known as the Project Card 
+//This class defines the design and style of that Project Card.
+//The Project Card will display the details of any project that has been created by the faculty members.
 class ProjectDisplayCard extends StatefulWidget {
+  //These are required parameters for the creation of a Project Card
   ProjectDisplayCard(
-      {@required this.projectName,
-      @required this.minStudents,
-      @required this.maxStudents,
-      @required this.teamDistribution,
-      @required this.startDate,
-      @required this.endDate,});
+      {@required this.projectName,//Name of the Project.
+      @required this.minStudents,//Minimum Number of Students
+      @required this.maxStudents,//Maximum Number of Students
+      @required this.teamDistribution,//Type of Team Distribution: "Random" or "Student preferred"
+      @required this.startDate,//Start Date for the project
+      @required this.endDate,//End Date for the project
+      }
+  );
+  //Declartion of the class variables which have been used for storing the details of the project
   final String projectName;
   final String minStudents;
   final String maxStudents;
