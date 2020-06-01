@@ -5,6 +5,8 @@ import 'package:hacknu2/faculty/createproject.dart';
 import 'package:hacknu2/screens/faculty_project_list.dart';
 import 'package:hacknu2/services/authentication.dart';
 
+
+//Class for Faculty Dashboard
 class FacultyDashboard extends StatefulWidget {
 
   FacultyDashboard({Key key, this.auth, this.userId, this.logoutCallback})
@@ -154,6 +156,7 @@ class _FacultyDashboard extends State<FacultyDashboard> {
   }
 }
 
+//A reusable card for displaying project data.
 class ReusableCard extends StatelessWidget {
   ReusableCard({
     @required this.colour,
