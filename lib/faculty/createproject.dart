@@ -24,7 +24,7 @@ class CreateProject extends StatefulWidget {
 }
 
 
-
+//Class for creating a new Project
 // ignore: camel_case_types
 class _CreateProjectState extends State<CreateProject> {
   String projectName, projectDesc;
@@ -54,7 +54,7 @@ class _CreateProjectState extends State<CreateProject> {
 
   Query _projectQuery;
 
-
+//Constructor
   @override
   void initState() {
     
@@ -70,7 +70,7 @@ class _CreateProjectState extends State<CreateProject> {
 
     super.initState();
   }
-
+//Destructor
   @override
   void dispose() {
     _onTodoAddedSubscription.cancel();
@@ -78,7 +78,7 @@ class _CreateProjectState extends State<CreateProject> {
     super.dispose();
   }
 
-
+//On Project Value Changed Method
  onEntryChanged(Event event) {
     var oldEntry = _projectList.singleWhere((entry) {
       return entry.key == event.snapshot.key;
@@ -89,13 +89,13 @@ class _CreateProjectState extends State<CreateProject> {
           ProjectModel.fromSnapShot(event.snapshot);
     });
   }
-
+//On New Project Added
 onEntryAdded(Event event) {
     setState(() {
       _projectList.add(ProjectModel.fromSnapShot(event.snapshot));
     });
   }
-
+//Selecting type of Team Distribution
   void selectTeamDistribution(String select) {
     if (select == 'Random Team Distribution')
       teamDistribution = TeamDistribution.Random;
@@ -103,13 +103,13 @@ onEntryAdded(Event event) {
       teamDistribution = TeamDistribution.Student;
   }
 
-
+//Adding New Project
   addNewProject(ProjectModel project) {
     if (project != null) {
       _database.reference().child("projects").push().set(project.toMap());
     }
   }
-
+//Update Todo List
   updateTodo(ProjectModel project) {
     //Toggle completed
    // todo.completed = !todo.completed;
@@ -117,7 +117,7 @@ onEntryAdded(Event event) {
       _database.reference().child("projects").child(project.key).set(project.toMap());
     }
   }
-
+//Delete Todo List
   deleteTodo(String todoId, int index) {
     _database.reference().child("todo").child(todoId).remove().then((_) {
       print("Delete $todoId successful");
