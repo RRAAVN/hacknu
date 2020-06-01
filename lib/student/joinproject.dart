@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hacknu2/components/projectdisplaycardstudent.dart';
 
+
+//Class Join Project
 class JoinProject extends StatefulWidget {
   @override
   _JoinProjectState createState() => _JoinProjectState();
