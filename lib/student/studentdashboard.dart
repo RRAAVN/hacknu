@@ -6,7 +6,7 @@ import 'package:hacknu2/student/viewproject.dart';
 import 'package:hacknu2/student/history.dart';
 import 'package:meta/dart2js.dart';
 
-
+//Student Dashboard
 class StudentDashBoard extends StatefulWidget {
   @override
   _StudentDashboardState createState() => _StudentDashboardState();
