@@ -1,10 +1,10 @@
 # HeraPheri | A Team Management Application For Faculty and Student
 
 
-<img src="lib/images/Login.jpeg" width="180"> <img src="lib/images/faculty_dashboard.jpeg" width="180">
-<img src="lib/images/new_project.jpeg" width="180">
-<img src="lib/images/new_project2.jpeg" width="180">
-<img src="lib/images/pro_details.jpeg" width="180">
+<img src="lib/images/Login.jpeg" width="170"> <img src="lib/images/faculty_dashboard.jpeg" width="170">
+<img src="lib/images/new_project.jpeg" width="170">
+<img src="lib/images/new_project2.jpeg" width="170">
+<img src="lib/images/pro_details.jpeg" width="170">
 
 
 ## What is HeraPheri ?
