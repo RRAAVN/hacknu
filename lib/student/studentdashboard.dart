@@ -6,8 +6,17 @@ import 'package:hacknu2/student/viewproject.dart';
 import 'package:hacknu2/student/history.dart';
 import 'package:meta/dart2js.dart';
 
+import '../services/authentication.dart';
+
 //Student Dashboard.
 class StudentDashBoard extends StatefulWidget {
+  StudentDashBoard({Key key, this.auth, this.userId, this.logoutCallback})
+      : super(key: key);
+
+  final BaseAuth auth;
+  final VoidCallback logoutCallback;
+  final String userId;
+
   @override
   _StudentDashboardState createState() => _StudentDashboardState();
 }
@@ -16,16 +25,14 @@ class _StudentDashboardState extends State<StudentDashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Center(
-            child: Text('Student Dashboard',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30.0
-              ),)),
+            child: Text(
+          'Student Dashboard',
+
+        )),
         flexibleSpace: Container(
-          /*
+            /*
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
                 colors: [
@@ -38,9 +45,9 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                 tileMode: TileMode.clamp),
           ),
            */
-        ),
+            ),
       ),
-      body:Container(
+      body: Container(
         /*
           decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -66,15 +73,26 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                           width: 170,
                           height: 200,
                           child: RaisedButton(
+                            color: Colors.deepPurple,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
-                              side: BorderSide(color: Colors.red),),
+                              side: BorderSide(color: Colors.orange),
+                            ),
                             onPressed: () {
-                              Navigator.push(context, new MaterialPageRoute(builder: (context)=>JoinProject()));
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => JoinProject()));
                             },
-                            child: Text("Join Project",style: TextStyle(
-                              fontSize: 32.0, fontStyle: FontStyle.italic,
-                            ), textAlign: TextAlign.center,),
+                            child: Text(
+                              "Join Project",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ),
@@ -88,16 +106,26 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                           width: 170,
                           height: 200,
                           child: RaisedButton(
+                            color: Colors.deepPurple,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
-                              side: BorderSide(color: Colors.red),
+                              side: BorderSide(color: Colors.orange),
                             ),
                             onPressed: () {
-                              Navigator.push(context, new MaterialPageRoute(builder: (context)=>ViewProject()));
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => ViewProject()));
                             },
-                            child: Text("View Projects",style: TextStyle(
-                              fontSize: 32.0, fontStyle: FontStyle.italic,
-                            ),textAlign: TextAlign.center,),
+                            child: Text(
+                              "View Projects",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ),
@@ -108,19 +136,28 @@ class _StudentDashboardState extends State<StudentDashBoard> {
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: new SizedBox(
-                  width: 400,
-                  height: 180,
+                  width: 300,
+                  height: 100,
                   child: RaisedButton(
+                    color: Colors.deepPurple,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      side: BorderSide(color: Colors.red),
+                      side: BorderSide(color: Colors.orange),
                     ),
                     onPressed: () {
-                      Navigator.push(context, new MaterialPageRoute(builder: (context)=>History()));
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => History()));
                     },
-                    child: Text("History",style: TextStyle(
-                      fontSize: 35.0, fontStyle: FontStyle.italic,
-                    ),),
+                    child: Text(
+                      "History",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -129,5 +166,14 @@ class _StudentDashboardState extends State<StudentDashBoard> {
         ),
       ),
     );
+  }
+
+  signOut() async {
+    try {
+      await widget.auth.signOut();
+      widget.logoutCallback();
+    } catch (e) {
+      print(e);
+    }
   }
 }

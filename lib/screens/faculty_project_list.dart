@@ -148,7 +148,8 @@ class _FacultyProjectsState extends State<FacultyProjects> {
       print(e);
     }
   }
-/** 
+
+/**
   addNewTodo(ProjectModel project) {
     if (project != null) {
       ProjectModel todo = new ProjectModel(todoItem.toString(), widget.userId, false);
@@ -156,23 +157,33 @@ class _FacultyProjectsState extends State<FacultyProjects> {
     }
   }
 */
-  updateTodo(ProjectModel project ) {
+  updateProject(ProjectModel project) {
     //Toggle completed
     //todo.completed = !todo.completed;
     if (project != null) {
-      _database.reference().child("projects").child(project.key).set(project.toMap());
+      _database
+          .reference()
+          .child("projects")
+          .child(project.key)
+          .set(project.toMap());
     }
   }
 
-  deleteTodo(String projectId, int index) {
-    _database.reference().child("projects").child("$projectId").remove().then((_) {
+  deleteProject(String projectId, int index) {
+    _database
+        .reference()
+        .child("projects")
+        .child("$projectId")
+        .remove()
+        .then((_) {
       print("Delete $projectId successful");
       setState(() {
         _projectList.removeAt(index);
       });
     });
   }
-/** 
+
+/**
   showAddTodoDialog(BuildContext context) async {
     _textEditingController.clear();
     await showDialog<String>(
@@ -208,7 +219,7 @@ class _FacultyProjectsState extends State<FacultyProjects> {
         });
   }
 */
-  Widget showTodoList() {
+  Widget showProjectList() {
     if (_projectList.length > 0) {
       return ListView.builder(
           shrinkWrap: true,
@@ -220,19 +231,21 @@ class _FacultyProjectsState extends State<FacultyProjects> {
             String maxTeam = _projectList[index].maxTeam;
             int startDate = _projectList[index].startDate;
             int endDate = _projectList[index].endDate;
-            TeamDistribution teamDistribution =
+            String teamDistribution =
                 _projectList[index].teamDistribution;
             String userId = _projectList[index].userId;
+            String description = _projectList[index].projectDescription;
             return Dismissible(
               key: Key(projectId),
               background: Container(color: Colors.red),
               onDismissed: (direction) async {
-                deleteTodo(projectId, index);
+                deleteProject(projectId, index);
               },
               child: ProjectDisplayCard(
                   projectName: projectName,
                   minStudents: minTeam,
                   maxStudents: maxTeam,
+                  description: description,
                   teamDistribution: teamDistribution.toString(),
                   startDate: startDate.toString(),
                   endDate: endDate.toString()),
@@ -251,12 +264,12 @@ class _FacultyProjectsState extends State<FacultyProjects> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: new Text('HackNutons'),
-          centerTitle: true,
-        ),
-        body: showTodoList(),
-        );
+      appBar: new AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: new Text('HackNutons'),
+        centerTitle: true,
+      ),
+      body: showProjectList(),
+    );
   }
 }
