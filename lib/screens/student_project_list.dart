@@ -7,8 +7,8 @@ import 'dart:async';
 
 import 'package:hacknu2/services/authentication.dart';
 
-class FacultyProjects extends StatefulWidget {
-  FacultyProjects({Key key, this.auth, this.userId, this.logoutCallback})
+class StudentProjects extends StatefulWidget {
+  StudentProjects({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   final BaseAuth auth;
@@ -16,10 +16,10 @@ class FacultyProjects extends StatefulWidget {
   final String userId;
 
   @override
-  State<StatefulWidget> createState() => new _FacultyProjectsState();
+  State<StatefulWidget> createState() => new _StudentProjectsState();
 }
 
-class _FacultyProjectsState extends State<FacultyProjects> {
+class _StudentProjectsState extends State<StudentProjects> {
   //When list is fetched from the firebase we will store it in local list
 
   List<ProjectModel> _projectList;
@@ -148,78 +148,67 @@ class _FacultyProjectsState extends State<FacultyProjects> {
       print(e);
     }
   }
-
-/**
-  addNewTodo(ProjectModel project) {
-    if (project != null) {
+  /**
+      addNewTodo(ProjectModel project) {
+      if (project != null) {
       ProjectModel todo = new ProjectModel(todoItem.toString(), widget.userId, false);
       _database.reference().child("todo").push().set(todo.toJson());
-    }
-  }
-*/
-  updateProject(ProjectModel project) {
+      }
+      }
+   */
+  updateTodo(ProjectModel project ) {
     //Toggle completed
     //todo.completed = !todo.completed;
     if (project != null) {
-      _database
-          .reference()
-          .child("projects")
-          .child(project.key)
-          .set(project.toMap());
+      _database.reference().child("projects").child(project.key).set(project.toMap());
     }
   }
 
-  deleteProject(String projectId, int index) {
-    _database
-        .reference()
-        .child("projects")
-        .child("$projectId")
-        .remove()
-        .then((_) {
+  deleteTodo(String projectId, int index) {
+    _database.reference().child("projects").child("$projectId").remove().then((_) {
       print("Delete $projectId successful");
       setState(() {
         _projectList.removeAt(index);
       });
     });
   }
-
-/**
-  showAddTodoDialog(BuildContext context) async {
-    _textEditingController.clear();
-    await showDialog<String>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: new Row(
-              children: <Widget>[
-                new Expanded(
-                    child: new TextField(
-                  controller: _textEditingController,
-                  autofocus: true,
-                  decoration: new InputDecoration(
-                    labelText: 'Add new project',
-                  ),
-                ))
-              ],
-            ),
-            actions: <Widget>[
-              new FlatButton(
-                  child: const Text('Cancel'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              new FlatButton(
-                  child: const Text('Save'),
-                  onPressed: () {
-                    addNewTodo(_textEditingController.text.toString());
-                    Navigator.pop(context);
-                  })
-            ],
-          );
-        });
-  }
-*/
-  Widget showProjectList() {
+  /**
+      showAddTodoDialog(BuildContext context) async {
+      _textEditingController.clear();
+      await showDialog<String>(
+      context: context,
+      builder: (BuildContext context) {
+      return AlertDialog(
+      content: new Row(
+      children: <Widget>[
+      new Expanded(
+      child: new TextField(
+      controller: _textEditingController,
+      autofocus: true,
+      decoration: new InputDecoration(
+      labelText: 'Add new project',
+      ),
+      ))
+      ],
+      ),
+      actions: <Widget>[
+      new FlatButton(
+      child: const Text('Cancel'),
+      onPressed: () {
+      Navigator.pop(context);
+      }),
+      new FlatButton(
+      child: const Text('Save'),
+      onPressed: () {
+      addNewTodo(_textEditingController.text.toString());
+      Navigator.pop(context);
+      })
+      ],
+      );
+      });
+      }
+   */
+  Widget showTodoList() {
     if (_projectList.length > 0) {
       return ListView.builder(
           shrinkWrap: true,
@@ -239,25 +228,24 @@ class _FacultyProjectsState extends State<FacultyProjects> {
               key: Key(projectId),
               background: Container(color: Colors.red),
               onDismissed: (direction) async {
-                deleteProject(projectId, index);
+                deleteTodo(projectId, index);
               },
               child: ProjectDisplayCard(
                   projectName: projectName,
                   minStudents: minTeam,
                   maxStudents: maxTeam,
-                  projectDescription: description,
                   teamDistribution: teamDistribution.toString(),
                   startDate: startDate.toString(),
-                  endDate: endDate.toString()),
+                  endDate: endDate.toString(), projectDescription: description,),
             );
           });
     } else {
       return Center(
           child: Text(
-        "Welcome. Your list is empty",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 30.0),
-      ));
+            "Welcome. Your list is empty",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 30.0),
+          ));
     }
   }
 
@@ -269,7 +257,7 @@ class _FacultyProjectsState extends State<FacultyProjects> {
         title: new Text('HackNutons'),
         centerTitle: true,
       ),
-      body: showProjectList(),
+      body: showTodoList(),
     );
   }
 }

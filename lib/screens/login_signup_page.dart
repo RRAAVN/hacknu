@@ -13,7 +13,7 @@ class LoginSignupPage extends StatefulWidget {
 
 class _LoginSignupPageState extends State<LoginSignupPage> {
   final _formKey = new GlobalKey<FormState>();
-
+  final RegExp teacher = new RegExp(r"st.niituniversity.in$");
   String _email;
   String _password;
   String _errorMessage;

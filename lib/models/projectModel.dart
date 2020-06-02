@@ -5,7 +5,7 @@ class ProjectModel {
   String projectName;
   String minTeam;
   String maxTeam;
-  TeamDistribution teamDistribution;
+  String teamDistribution;
   //Group sectionCriteria;
   String projectDescription;
   String userId;

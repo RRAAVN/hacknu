@@ -95,7 +95,7 @@ class _CreateProjectState extends State<CreateProject> {
   }
 //Selecting type of Team Distribution
   void selectTeamDistribution(String select) {
-    if (select == 'Random Team Distribution')
+    if (select == "Random Team Distribution")
       teamDistribution = TeamDistribution.Random;
     else
       teamDistribution = TeamDistribution.Student;
@@ -105,6 +105,7 @@ class _CreateProjectState extends State<CreateProject> {
   addNewProject(ProjectModel project) {
     if (project != null) {
       _database.reference().child("projects").push().set(project.toMap());
+      Navigator.pop(context);
     }
   }
 //Update Todo List
@@ -329,12 +330,12 @@ class _CreateProjectState extends State<CreateProject> {
                           .show();
                     } else {
                       //set button function
-                      print(widget.userId);
                       addNewProject(new ProjectModel(
                           projectName: projectName,
                           projectDescription: projectDesc,
                           minTeam: minNumberStudents,
                           maxTeam: maxNumberStudents,
+                          teamDistribution: _pickedTeam,
                           endDate: endDate,
                           startDate: startDate,
                           userId: widget.userId));
