@@ -1,6 +1,4 @@
-import 'package:hacknu2/components/student_project_screen.dart';
-
-import 'roundedbutton.dart';
+import 'package:hacknu2/components/StudentProjectWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +52,7 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                             teamDistribution: widget.teamDistribution,
                             startDate: widget.startDate,
                             endDate: widget.endDate,
-                            description:widget.description
+                            projectDescription:widget.description
                           )));
             },
             child: Column(
