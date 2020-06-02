@@ -42,6 +42,7 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentProjectScreen(courseName: widget.projectName,minStudents: widget.minStudents,maxStudents: widget.maxStudents,teamDistribution: widget.teamDistribution,startDate: widget.startDate,endDate: widget.endDate,)));
             },
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
