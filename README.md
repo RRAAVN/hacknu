@@ -1,7 +1,11 @@
 # HeraPheri | A Team Management Application For Faculty and Student
 
 
-Space for Screen Shots
+<img src="lib/images/Login.jpeg" width="180"> <img src="lib/images/faculty_dashboard.jpeg" width="180">
+<img src="lib/images/new_project.jpeg" width="180">
+<img src="lib/images/new_project2.jpeg" width="180">
+<img src="lib/images/pro_details.jpeg" width="180">
+
 
 ## What is HeraPheri ?
 - The main focus of this app is to build an interface for both faculties and students for project management varying across courses.
