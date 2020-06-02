@@ -21,6 +21,8 @@ class CreateProject extends StatefulWidget {
   _CreateProjectState createState() => _CreateProjectState();
 }
 
+
+//Class for creating a new Project
 // ignore: camel_case_types
 class _CreateProjectState extends State<CreateProject> {
   String projectName, projectDesc;
