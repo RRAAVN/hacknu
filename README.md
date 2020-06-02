@@ -62,6 +62,7 @@ Space for Screen Shots
    
     
 ## Acknowledgement:-
+- We will always be grateful to [Kaustubh Kishore](https://www.linkedin.com/in/kaustubh-kishore/ "LinkedIn URL") for the support and kindness. It would be impossible to count all the ways that you've helped us in this project. Thank you so much for all that you've done. We only hope we can return the favor sometime in the future. Thanks for being a good mentor and for guiding us on the right path.
 ## Contact Information:-
 - For any suggestions or qurey, feel free to email us at <nu.firebase.auth@gmail.com>
 ## Licence:-
