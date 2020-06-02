@@ -3,10 +3,18 @@
 
 Spcae for Screen Shots
 
-# What is HeraPheri ?
+## What is HeraPheri ?
 
+---
 
-# Folder Structure
-
-
-# Development Environment Setup
+## Contents :-
+   1. Prerequisites
+   2. How to Install
+   3. How to Use
+   4. How to Contribute
+   5. Contributors
+   6. Acknowledgements
+   7. Contact Information
+   8. Licence 
+ 
+---
