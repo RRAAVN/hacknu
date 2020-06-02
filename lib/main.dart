@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hacknu2/screens/root_page.dart';
 import 'package:hacknu2/services/authentication.dart';
-import 'package:hacknu2/student/studentdashboard.dart';
 
 
 void main() {
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
         title: 'Hacknutons',
         debugShowCheckedModeBanner: false,
         theme: new ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.deepPurple,
         ),
         home: new RootPage(auth: new Auth())); 
         

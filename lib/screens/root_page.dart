@@ -4,6 +4,8 @@ import 'package:hacknu2/screens/home_page.dart';
 import 'package:hacknu2/screens/login_signup_page.dart';
 import 'package:hacknu2/services/authentication.dart';
 
+import '../student/studentdashboard.dart';
+
 enum AuthStatus {
   NOT_DETERMINED,
   NOT_LOGGED_IN,
@@ -78,6 +80,7 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
+
           return new FacultyDashboard(
             userId: _userId,
             auth: widget.auth,

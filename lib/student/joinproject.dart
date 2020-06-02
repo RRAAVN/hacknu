@@ -12,12 +12,11 @@ class _JoinProjectState extends State<JoinProject> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
       appBar: AppBar(
         title: Text(
           'New Projects',
-          style: TextStyle(color: Colors.black, fontSize: 30.0),
         ),
+        centerTitle: true,
         flexibleSpace: Container(
           /*
           decoration: new BoxDecoration(
