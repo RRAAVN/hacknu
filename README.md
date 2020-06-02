@@ -57,7 +57,7 @@
    9. Make sure your text editor is set to remove trailing whitespace.
 
 ## Contributors:-
-   - Aman Kumar Singh [Pending](https://developer.android.com/studio "Download Link")
+   - Aman Kumar Singh [Connect on LinkedIn](https://www.linkedin.com/in/aman-singh-7b9a89174/ "LinkedIn URL")
    - Anoop Gupta, [Connect on LinkedIn](https://www.linkedin.com/in/anoop-gupta-2490a2144/ "LinkedIn URL")
    - Ninad Kanchan [Connect on LinkedIn](https://www.linkedin.com/in/ninad-kanchan/ "LinkedIn URL") 
    - Rajat Kaushik [Connect on LinkedIn](https://www.linkedin.com/in/kaushik-rajat/ "LinkedIn URL")
