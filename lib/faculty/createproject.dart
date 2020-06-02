@@ -51,6 +51,7 @@ class _CreateProjectState extends State<CreateProject> {
 
   Query _projectQuery;
 
+
   @override
   void initState() {
     _projectList = new List();
@@ -65,7 +66,7 @@ class _CreateProjectState extends State<CreateProject> {
 
     super.initState();
   }
-
+//Destructor
   @override
   void dispose() {
     _onTodoAddedSubscription.cancel();
@@ -74,6 +75,7 @@ class _CreateProjectState extends State<CreateProject> {
   }
 
   onEntryChanged(Event event) {
+
     var oldEntry = _projectList.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
@@ -84,12 +86,14 @@ class _CreateProjectState extends State<CreateProject> {
     });
   }
 
+
   onEntryAdded(Event event) {
+
     setState(() {
       _projectList.add(ProjectModel.fromSnapShot(event.snapshot));
     });
   }
-
+//Selecting type of Team Distribution
   void selectTeamDistribution(String select) {
     if (select == 'Random Team Distribution')
       teamDistribution = TeamDistribution.Random;
@@ -97,12 +101,13 @@ class _CreateProjectState extends State<CreateProject> {
       teamDistribution = TeamDistribution.Student;
   }
 
+
   addNewProject(ProjectModel project) {
     if (project != null) {
       _database.reference().child("projects").push().set(project.toMap());
     }
   }
-
+//Update Todo List
   updateTodo(ProjectModel project) {
     //Toggle completed
     // todo.completed = !todo.completed;
@@ -114,7 +119,7 @@ class _CreateProjectState extends State<CreateProject> {
           .set(project.toMap());
     }
   }
-
+//Delete Todo List
   deleteTodo(String todoId, int index) {
     _database.reference().child("todo").child(todoId).remove().then((_) {
       print("Delete $todoId successful");

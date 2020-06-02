@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hacknu2/components/projectdisplaycardstudent.dart';
 
+//Class for Viewing Project
 class ViewProject extends StatefulWidget {
   @override
   _ViewProjectState createState() => _ViewProjectState();
 }
-
+//Screen Builder
 class _ViewProjectState extends State<ViewProject> {
   @override
   Widget build(BuildContext context) {
