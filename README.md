@@ -68,7 +68,7 @@
 ## Acknowledgement:-
 - We will always be grateful to [Kaustubh Kishore](https://www.linkedin.com/in/kaustubh-kishore/ "LinkedIn URL") for his constructive feedbacks and supportive mentoring during this project. Thanks for being a good mentor and for guiding us on the right path.
 ## Contact Information:-
-- For any suggestions or qurey, feel free to email us at <nu.firebase.auth@gmail.com>
+- For any suggestions or query, feel free to email us at <nu.firebase.auth@gmail.com>
 ## Licence:-
 
 Copyright (c) [2020] [Team - HeraPheri]
