@@ -252,13 +252,9 @@ class _FacultyProjectsState extends State<FacultyProjects> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
+          backgroundColor: Colors.deepPurple,
           title: new Text('HackNutons'),
-          actions: <Widget>[
-            new FlatButton(
-                child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-                onPressed: signOut)
-          ],
+          centerTitle: true,
         ),
         body: showTodoList(),
         );

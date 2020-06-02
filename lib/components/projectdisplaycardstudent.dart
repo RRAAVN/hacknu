@@ -28,14 +28,16 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(8.0),
         child: new Container(
           child: RaisedButton(
+            elevation: 10,
+            color: Colors.orange,
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentProjectScreen(courseName: widget.projectName,minStudents: widget.minStudents,maxStudents: widget.maxStudents,teamDistribution: widget.teamDistribution,startDate: widget.startDate,endDate: widget.endDate,)));
             },
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Row(
                   children: <Widget>[
@@ -43,9 +45,11 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            Text("Course Name:"),
+                            Text("Course Name:    ",style: TextStyle(
+                              color: Colors.white
+                            ),),
                           ],
                         ),
                       ),
@@ -59,7 +63,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.projectName)),
+                            Expanded(child: Text(widget.projectName,style: TextStyle(
+                                color: Colors.white
+                            ),)),
                           ],
                         ),
                       ),
@@ -74,7 +80,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Min Students:"),
+                            Text("Min Students:    ",style: TextStyle(
+                                color: Colors.white
+                            ),),
                           ],
                         ),
                       ),
@@ -88,7 +96,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.minStudents)),
+                            Expanded(child: Text(widget.minStudents,style: TextStyle(
+                                color: Colors.white
+                            ),)),
                           ],
                         ),
                       ),
@@ -103,7 +113,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Max Students:"),
+                            Text("Max Students:    ",style: TextStyle(
+                                color: Colors.white
+                            ),),
                           ],
                         ),
                       ),
@@ -117,7 +129,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.maxStudents)),
+                            Expanded(child: Text(widget.maxStudents,style: TextStyle(
+                                color: Colors.white
+                            ),)),
                           ],
                         ),
                       ),
@@ -132,7 +146,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Team Distribution:"),
+                            Text("Team Distribution:   ",style: TextStyle(
+                                color: Colors.white
+                            ),),
                           ],
                         ),
                       ),
@@ -146,7 +162,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.teamDistribution)),
+                            Expanded(child: Text(widget.teamDistribution,style: TextStyle(
+                                color: Colors.white
+                            ),)),
                           ],
                         ),
                       ),
@@ -161,7 +179,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Start Date:"),
+                            Text("Start Date :    ",style: TextStyle(
+                                color: Colors.white
+                            ),),
                           ],
                         ),
                       ),
@@ -175,7 +195,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.startDate)),
+                            Expanded(child: Text(widget.startDate,style: TextStyle(
+                                color: Colors.white
+                            ),)),
                           ],
                         ),
                       ),
@@ -190,7 +212,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("End Date:"),
+                            Text("End Date :    ",style: TextStyle(
+                                color: Colors.white
+                            ),),
                           ],
                         ),
                       ),
@@ -204,7 +228,9 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(child: Text(widget.endDate)),
+                            Expanded(child: Text(widget.endDate,style: TextStyle(
+                                color: Colors.white
+                            ),)),
                           ],
                         ),
                       ),
@@ -214,8 +240,7 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
               ],
             ),
             shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.red),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(50)),
           ),
         ),
       ),

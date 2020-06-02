@@ -9,10 +9,8 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../services/authentication.dart';
 
-
 // ignore: camel_case_types
 class CreateProject extends StatefulWidget {
-
   CreateProject({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
@@ -22,8 +20,6 @@ class CreateProject extends StatefulWidget {
   @override
   _CreateProjectState createState() => _CreateProjectState();
 }
-
-
 
 // ignore: camel_case_types
 class _CreateProjectState extends State<CreateProject> {
@@ -36,10 +32,9 @@ class _CreateProjectState extends State<CreateProject> {
   int startDate, endDate;
   String maxNumberStudents, minNumberStudents;
 
-
 //We will store all the projects in a local list variables
   List<ProjectModel> _projectList;
-  
+
   final FirebaseDatabase _database = FirebaseDatabase.instance;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -54,11 +49,9 @@ class _CreateProjectState extends State<CreateProject> {
 
   Query _projectQuery;
 
-
   @override
   void initState() {
-    
-     _projectList = new List();
+    _projectList = new List();
     _projectQuery = _database
         .reference()
         .child("projects")
@@ -78,8 +71,7 @@ class _CreateProjectState extends State<CreateProject> {
     super.dispose();
   }
 
-
- onEntryChanged(Event event) {
+  onEntryChanged(Event event) {
     var oldEntry = _projectList.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
@@ -90,7 +82,7 @@ class _CreateProjectState extends State<CreateProject> {
     });
   }
 
-onEntryAdded(Event event) {
+  onEntryAdded(Event event) {
     setState(() {
       _projectList.add(ProjectModel.fromSnapShot(event.snapshot));
     });
@@ -103,7 +95,6 @@ onEntryAdded(Event event) {
       teamDistribution = TeamDistribution.Student;
   }
 
-
   addNewProject(ProjectModel project) {
     if (project != null) {
       _database.reference().child("projects").push().set(project.toMap());
@@ -112,9 +103,13 @@ onEntryAdded(Event event) {
 
   updateTodo(ProjectModel project) {
     //Toggle completed
-   // todo.completed = !todo.completed;
+    // todo.completed = !todo.completed;
     if (project != null) {
-      _database.reference().child("projects").child(project.key).set(project.toMap());
+      _database
+          .reference()
+          .child("projects")
+          .child(project.key)
+          .set(project.toMap());
     }
   }
 
@@ -126,9 +121,6 @@ onEntryAdded(Event event) {
       });
     });
   }
-
-
-
 
 //  void selectGroup(String select) {
 //    if (select == 'Same Section')
@@ -145,20 +137,25 @@ onEntryAdded(Event event) {
       appBar: AppBar(
         title: Text('Create a New Project'),
         centerTitle: true,
+        backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            headLabel(
-              value: 'Enter a Project Name',
+            Center(
+              child: headLabel(
+                value: 'Enter a Project Name',
+              ),
             ),
             EntryBox(
               textEditingController: _projectNameTextEditingController,
               placeHolder: 'Project Name Here',
             ),
-            headLabel(
-              value: 'Enter the Size of Team',
+            Center(
+              child: headLabel(
+                value: 'Enter the Size of Team',
+              ),
             ),
             Row(
               children: <Widget>[
@@ -179,8 +176,10 @@ onEntryAdded(Event event) {
                 ),
               ],
             ),
-            headLabel(
-              value: 'Select a Preference for Team Distribution',
+            Center(
+              child: headLabel(
+                value: 'Select a Preference for Team Distribution',
+              ),
             ),
             RadioButtonGroup(
               margin: EdgeInsets.symmetric(vertical: 10),
@@ -196,6 +195,7 @@ onEntryAdded(Event event) {
                 "Random Team Distribution",
               ],
               orientation: GroupedButtonsOrientation.VERTICAL,
+              activeColor: Colors.deepPurple,
             ),
 //            headLabel(
 //              value: 'Select a Preference',
@@ -215,18 +215,25 @@ onEntryAdded(Event event) {
 //              ],
 //              orientation: GroupedButtonsOrientation.VERTICAL,
 //            ),
-            headLabel(
-              value: 'Enter a brief Project Description',
+            Center(
+              child: headLabel(
+                value: 'Enter a brief Project Description',
+              ),
             ),
             EntryBox(
               textEditingController: _descriptionTextEditingController,
               placeHolder: 'Enter a Short Description',
               keyInput: TextInputType.multiline,
             ),
-            headLabel(
-              value: 'Pick a Start Date:',
+            Center(
+              child: headLabel(
+                value: 'Pick a Start Date:',
+              ),
             ),
             RaisedButton(
+              color: Colors.deepPurple,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)),
               onPressed: () {
                 showDatePicker(
                         context: context,
@@ -245,13 +252,24 @@ onEntryAdded(Event event) {
               },
               child: showStartDate
                   ? Text(
-                      '${_startDateTime.day}/${_startDateTime.month}/${_startDateTime.year}')
-                  : Text('Pick a Start Date'),
+                      '${_startDateTime.day}/${_startDateTime.month}/${_startDateTime.year}',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  : Text(
+                      'Pick a Start Date',
+                      style: TextStyle(color: Colors.white),
+                    ),
             ),
-            headLabel(
-              value: 'Pick an End Date:',
+            Center(
+              child: headLabel(
+                value: 'Pick an End Date:',
+              ),
             ),
             RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              color: Colors.deepPurple,
               onPressed: () {
                 showDatePicker(
                         context: context,
@@ -270,27 +288,49 @@ onEntryAdded(Event event) {
               },
               child: showEndDate
                   ? Text(
-                      '${_endDateTime.day}/${_endDateTime.month}/${_endDateTime.year}')
-                  : Text('Pick an End Date'),
+                      '${_endDateTime.day}/${_endDateTime.month}/${_endDateTime.year}',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  : Text(
+                      'Pick an End Date',
+                      style: TextStyle(color: Colors.white),
+                    ),
             ),
             SizedBox(
               height: 20,
             ),
             Card(
-              color: Colors.blue,
+              color: Colors.orange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
               child: FlatButton(
-                onPressed: (){
+                onPressed: () {
                   projectName = _projectNameTextEditingController.text;
                   projectDesc = _descriptionTextEditingController.text;
                   minNumberStudents = _minTextEditingController.text;
                   maxNumberStudents = _maxTextEditingController.text;
                   setState(() {
-                    if(projectName == null && minNumberStudents == null && maxNumberStudents == null && projectDesc == null){
-                      Alert(context: context, title: "Error", desc: "Fill all the details properly.").show();
-                    }else{
+                    if (projectName == null &&
+                        minNumberStudents == null &&
+                        maxNumberStudents == null &&
+                        projectDesc == null) {
+                      Alert(
+                              context: context,
+                              title: "Error",
+                              desc: "Fill all the details properly.")
+                          .show();
+                    } else {
                       //set button function
                       print(widget.userId);
-                      addNewProject(new ProjectModel(projectName: projectName,projectDescription: projectDesc,minTeam: minNumberStudents,maxTeam: maxNumberStudents,endDate:endDate,startDate: startDate,userId: widget.userId));
+                      addNewProject(new ProjectModel(
+                          projectName: projectName,
+                          projectDescription: projectDesc,
+                          minTeam: minNumberStudents,
+                          maxTeam: maxNumberStudents,
+                          endDate: endDate,
+                          startDate: startDate,
+                          userId: widget.userId));
                     }
                   });
                 },
@@ -306,8 +346,3 @@ onEntryAdded(Event event) {
     );
   }
 }
-
-
-
-
-

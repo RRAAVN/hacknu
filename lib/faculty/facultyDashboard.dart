@@ -21,29 +21,31 @@ class _FacultyDashboard extends State<FacultyDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
         title: Center(
           child: Text(
             'Faculty Dashboard',
-            style: TextStyle(color: Colors.black, fontSize: 30.0),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
       body: ListView(
-        
         children: <Widget>[
           Center(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 30, 15, 15),
               child: new SizedBox(
-                width: 400,
-                height: 140,
+                width: 300,
+                height: 100,
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: Colors.red),
+                    side: BorderSide(color: Colors.orange),
                   ),
+                  color: Colors.deepPurple,
                   onPressed: () {
                     setState(() {
                       Navigator.push(
@@ -56,8 +58,9 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                   child: Text(
                     "Create Project",
                     style: TextStyle(
-                      fontSize: 38.0,
+                      fontSize: 20,
                       fontStyle: FontStyle.italic,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -68,23 +71,25 @@ class _FacultyDashboard extends State<FacultyDashboard> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: new SizedBox(
-                width: 400,
-                height: 140,
+                width: 300,
+                height: 100,
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: Colors.red),
+                    side: BorderSide(color: Colors.orange),
                   ),
+                  color: Colors.deepPurple,
                   onPressed: () {
                    Navigator.push(context, MaterialPageRoute(builder: (context){
                      return FacultyProjects(auth: widget.auth,logoutCallback:widget.logoutCallback,userId: widget.userId,);
-                   })); 
+                   }));
                   },
                   child: Text(
                     "View Projects",
                     style: TextStyle(
-                      fontSize: 38.0,
+                      fontSize: 20,
                       fontStyle: FontStyle.italic,
+                      color: Colors.white
                     ),
                   ),
                 ),
@@ -95,19 +100,21 @@ class _FacultyDashboard extends State<FacultyDashboard> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: new SizedBox(
-                width: 400,
-                height: 140,
+                width: 300,
+                height: 100,
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: Colors.red),
+                    side: BorderSide(color: Colors.orange),
                   ),
+                  color: Colors.deepPurple,
                   onPressed: () {},
                   child: Text(
                     "History",
                     style: TextStyle(
-                      fontSize: 38.0,
+                      fontSize: 20,
                       fontStyle: FontStyle.italic,
+                      color: Colors.white
                     ),
                   ),
                 ),
@@ -119,18 +126,19 @@ class _FacultyDashboard extends State<FacultyDashboard> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: new SizedBox(
-                width: 400,
-                height: 140,
+                width: MediaQuery.of(context).size.width,
+                height: 50,
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: Colors.red),
+                    side: BorderSide(color: Colors.orange),
                   ),
+                  color: Colors.orange,
                   onPressed: ()=>signOut(),
                   child: Text(
                     "Log Out",
                     style: TextStyle(
-                      fontSize: 38.0,
+                      fontSize: 20,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
