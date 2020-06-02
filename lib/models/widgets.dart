@@ -29,15 +29,21 @@ class EntryBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        cursorColor: Colors.orange,
         controller: textEditingController,
         keyboardType: keyInput,
         maxLines: keyInput == TextInputType.multiline ? null : 1,
         decoration: InputDecoration(
           hintText: placeHolder,
+          fillColor: Colors.deepPurple,
+          focusColor: Colors.deepPurple,
           labelStyle: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-          border: OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2.3),
+            borderSide: BorderSide(color: Colors.deepPurple, width: 3),
+            borderRadius: BorderRadius.circular(30)
           ),
         ),
         

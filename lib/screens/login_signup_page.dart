@@ -92,6 +92,8 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
     return new Scaffold(
         appBar: new AppBar(
           title: new Text('HackNutons'),
+          backgroundColor: Colors.deepPurple,
+          centerTitle: true,
         ),
         body: Stack(
           children: <Widget>[
@@ -173,20 +175,17 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   Widget showLogo() {
     return new Hero(
       tag: 'hero',
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
-        child: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          radius: 48.0,
-          child: Image.asset('assets/flutter-icon.png'),
-        ),
+      child: CircleAvatar(
+        backgroundColor: Colors.transparent,
+        radius: 120.0,
+        child: Image.asset('assets/logo.png'),
       ),
     );
   }
 
   Widget showEmailInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
       child: new TextFormField(
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
@@ -223,23 +222,33 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   }
 
   Widget showSecondaryButton() {
-    return new FlatButton(
-        child: new Text(
-            _isLoginForm ? 'Create an account' : 'Have an account? Sign in',
-            style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
-        onPressed: toggleFormMode);
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: SizedBox(
+        height: 50.0,
+        child: new FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(30.0),
+          ),
+          color: Colors.orange,
+            child: new Text(
+                _isLoginForm ? 'Create an account' : 'Have an account? Sign in',
+                style: new TextStyle(fontSize: 18.0,)),
+            onPressed: toggleFormMode),
+      ),
+    );
   }
 
   Widget showPrimaryButton() {
     return new Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
+        padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
         child: SizedBox(
-          height: 40.0,
+          height: 50.0,
           child: new RaisedButton(
             elevation: 5.0,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
-            color: Colors.blue,
+            color: Colors.deepPurpleAccent,
             child: new Text(_isLoginForm ? 'Login' : 'Create account',
                 style: new TextStyle(fontSize: 20.0, color: Colors.white)),
             onPressed: validateAndSubmit,
