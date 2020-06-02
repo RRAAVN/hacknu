@@ -4,6 +4,23 @@
 Spcae for Screen Shots
 
 ## What is HeraPheri ?
+- The main focus of this app is to build an interface for both faculties and students for project management varying across courses.
+
+- Both faculty and student have different sign up options. 
+
+- After faculty sign in, the faculty is able to create Projects, view his created Projects and also has access to the Projects which has   expired in the history section. On creating a project, faculty can set the 
+   1. Project description, 
+   2. Minimum and Maximum size of the team, 
+   3. Team distribution among students, and various other details. 
+
+- After a Project is created the Project is available in students dashboard's, where the student can 
+  1. Join the created project (in Join Project section) by 
+     1. joining an existing team or 
+     2. by creating is own team. 
+  2. Able to check his joined Projects. 
+  3. The details of joined Projects which he have joined but it has expired. 
+
+- Accordingly, after a student joins a project, the faculty may check who joined and what is the list of teams created for a project and   evaluate them accordingly.
 
 ## Contents :-
    1. Prerequisites
@@ -22,7 +39,7 @@ Spcae for Screen Shots
 - We recommend you to have a minimum 4Gb of RAM, 4GB Available Disk Space on SSD (if available).
 
 ## How to Install:-
-   - [Click Here](https://developer.android.com/studio "Download Link") to download the application.
+- [Click Here](https://developer.android.com/studio "Download Link") to download the application.
 ## How to Use:-
 
 ## Contribution Guidelines:-
