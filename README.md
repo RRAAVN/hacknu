@@ -1,4 +1,4 @@
-# HeraPheri | A Team Management Application For Faculty and Student
+# NuTeams | A Team Management Application For Faculty and Student
 
 
 <img src="lib/images/Login.jpeg" width="170"> <img src="lib/images/faculty_dashboard.jpeg" width="170">
@@ -7,7 +7,7 @@
 <img src="lib/images/pro_details.jpeg" width="170">
 
 
-## What is HeraPheri ?
+## What is NuTeams?
 - The main focus of this app is to build an interface for both faculties and students for project management varying across courses.
 
 - Both faculty and student have different sign up options. 
@@ -61,7 +61,7 @@
    - Anoop Gupta, [Connect on LinkedIn](https://www.linkedin.com/in/anoop-gupta-2490a2144/ "LinkedIn URL")
    - Ninad Kanchan [Connect on LinkedIn](https://www.linkedin.com/in/ninad-kanchan/ "LinkedIn URL") 
    - Rajat Kaushik [Connect on LinkedIn](https://www.linkedin.com/in/kaushik-rajat/ "LinkedIn URL")
-   - Richard Tony [Pending](https://developer.android.com/studio "Download Link")
+   - Richard Tony [Follow on Twitter](https://twitter.com/Richtony14?s=08 "Twitter URL")
    - Vishnu Sharma [Connect on LinkedIn](https://www.linkedin.com/in/vishnu-sharma-55299314b/ "LinkedIn URL")
    
     
