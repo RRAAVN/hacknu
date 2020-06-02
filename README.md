@@ -1,7 +1,7 @@
 # HeraPheri | A Team Management Application For Faculty and Student
 
 
-Spcae for Screen Shots
+Space for Screen Shots
 
 ## What is HeraPheri ?
 - The main focus of this app is to build an interface for both faculties and students for project management varying across courses.
@@ -25,12 +25,11 @@ Spcae for Screen Shots
 ## Contents :-
    1. Prerequisites
    2. How to Install
-   3. How to Use
-   4. Contribution Guidelines
-   5. Contributors
-   6. Acknowledgement
-   7. Contact Information
-   8. Licence 
+   3. Contribution Guidelines
+   4. Contributors
+   5. Acknowledgement
+   6. Contact Information
+   7. Licence 
  
 
 ## Prerequisites
@@ -40,7 +39,6 @@ Spcae for Screen Shots
 
 ## How to Install:-
 - [Click Here](https://developer.android.com/studio "Download Link") to download the application.
-## How to Use:-
 
 ## Contribution Guidelines:-
 - Contributions are always welcome! Please ensure your pull request adheres to the following guidelines:
@@ -55,12 +53,12 @@ Spcae for Screen Shots
    9. Make sure your text editor is set to remove trailing whitespace.
 
 ## Contributors:-
-   - Aman Kumar Singh 
-   - Anoop Gupta
-   - Ninad Kanchan
-   - Rajat Kaushik
-   - Richard Tony
-   - Vishnu Sharma
+   - Aman Kumar Singh [Pending](https://developer.android.com/studio "Download Link")
+   - Anoop Gupta, [Connect on LinkedIn](https://www.linkedin.com/in/anoop-gupta-2490a2144/ "LinkedIn URL")
+   - Ninad Kanchan [Connect on LinkedIn](https://www.linkedin.com/in/ninad-kanchan/ "LinkedIn URL") 
+   - Rajat Kaushik [Connect on LinkedIn](https://www.linkedin.com/in/kaushik-rajat/ "LinkedIn URL")
+   - Richard Tony [Pending](https://developer.android.com/studio "Download Link")
+   - Vishnu Sharma [Connect on LinkedIn](https://www.linkedin.com/in/vishnu-sharma-55299314b/ "LinkedIn URL")
    
     
 ## Acknowledgement:-
