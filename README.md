@@ -42,7 +42,7 @@
 - We recommend you to have a minimum 4Gb of RAM, 4GB Available Disk Space on SSD (if available).
 
 ## How to Install:-
-- [Click Here](https://developer.android.com/studio "Download Link") to download the application.
+- NuTeams will be available soon on playstore. 
 
 ## Contribution Guidelines:-
 - Contributions are always welcome! Please ensure your pull request adheres to the following guidelines:
