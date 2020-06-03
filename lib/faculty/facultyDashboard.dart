@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:hacknu2/faculty/createproject.dart';
 import 'package:hacknu2/screens/faculty_project_list.dart';
 import 'package:hacknu2/services/authentication.dart';
-
+import "package:hacknu2/screens/registered_teams.dart";
 
 //Class for Faculty Dashboard
 class FacultyDashboard extends StatefulWidget {
-
   FacultyDashboard({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
@@ -23,7 +22,6 @@ class _FacultyDashboard extends State<FacultyDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         centerTitle: true,
@@ -53,9 +51,12 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CreateProject(auth: widget.auth,userId: widget.userId,logoutCallback: widget.logoutCallback,)));
+                              builder: (context) => CreateProject(
+                                    auth: widget.auth,
+                                    userId: widget.userId,
+                                    logoutCallback: widget.logoutCallback,
+                                  )));
                     });
-
                   },
                   child: Text(
                     "Create Project",
@@ -82,17 +83,21 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                   ),
                   color: Colors.deepPurple,
                   onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                     return FacultyProjects(auth: widget.auth,logoutCallback:widget.logoutCallback,userId: widget.userId,);
-                   }));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return FacultyProjects(
+                        auth: widget.auth,
+                        logoutCallback: widget.logoutCallback,
+                        userId: widget.userId,
+                      );
+                    }));
                   },
                   child: Text(
                     "View Projects",
                     style: TextStyle(
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.white
-                    ),
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.white),
                   ),
                 ),
               ),
@@ -114,17 +119,48 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                   child: Text(
                     "History",
                     style: TextStyle(
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.white
-                    ),
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.white),
                   ),
                 ),
               ),
             ),
           ),
-
-           Center(
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: new SizedBox(
+                width: 300,
+                height: 100,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    side: BorderSide(color: Colors.orange),
+                  ),
+                  color: Colors.deepPurple,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return RegisteredTeams(
+                        auth: widget.auth,
+                        logoutCallback: widget.logoutCallback,
+                        userId: widget.userId,
+                      );
+                    }));
+                  },
+                  child: Text(
+                    "Teams Registered",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Center(
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: new SizedBox(
@@ -136,7 +172,7 @@ class _FacultyDashboard extends State<FacultyDashboard> {
                     side: BorderSide(color: Colors.orange),
                   ),
                   color: Colors.orange,
-                  onPressed: ()=>signOut(),
+                  onPressed: () => signOut(),
                   child: Text(
                     "Log Out",
                     style: TextStyle(
@@ -152,7 +188,6 @@ class _FacultyDashboard extends State<FacultyDashboard> {
       ),
     );
   }
-
 
   signOut() async {
     try {

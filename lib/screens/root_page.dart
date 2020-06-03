@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hacknu2/faculty/facultyDashboard.dart';
-import 'package:hacknu2/screens/home_page.dart';
 import 'package:hacknu2/screens/login_signup_page.dart';
 import 'package:hacknu2/services/authentication.dart';
 
@@ -24,7 +23,7 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
   String _userId = "";
-
+  bool isteacher;
   @override
   void initState() {
     super.initState();
@@ -73,19 +72,26 @@ class _RootPageState extends State<RootPage> {
         return buildWaitingScreen();
         break;
       case AuthStatus.NOT_LOGGED_IN:
-        return new LoginSignupPage(
+        LoginSignupPage loginSignupPage = new LoginSignupPage(
           auth: widget.auth,
           loginCallback: loginCallback,
         );
+
+        return loginSignupPage;
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-
-          return new StudentDashBoard(
-            userId: _userId,
-            auth: widget.auth,
-            logoutCallback: logoutCallback,
-          );
+          return true
+              ? new FacultyDashboard(
+                  userId: _userId,
+                  auth: widget.auth,
+                  logoutCallback: logoutCallback,
+                )
+              : new StudentDashBoard(
+                  userId: _userId,
+                  auth: widget.auth,
+                  logoutCallback: logoutCallback,
+                );
         } else
           return buildWaitingScreen();
         break;

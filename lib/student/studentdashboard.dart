@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hacknu2/screens/student_project_list.dart';
 import 'dart:ui';
 import 'package:hacknu2/student/joinproject.dart';
 import 'package:hacknu2/student/viewproject.dart';
@@ -80,7 +81,7 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                               Navigator.push(
                                   context,
                                   new MaterialPageRoute(
-                                      builder: (context) => JoinProject()));
+                                      builder: (context) => StudentProjects(auth: widget.auth,userId: widget.userId,logoutCallback: widget.logoutCallback,)));
                             },
                             child: Text(
                               "Join Project",
@@ -113,7 +114,7 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                               Navigator.push(
                                   context,
                                   new MaterialPageRoute(
-                                      builder: (context) => ViewProject()));
+                                      builder: (context) => StudentProjects(auth: widget.auth,logoutCallback: widget.logoutCallback,userId: widget.userId,)));
                             },
                             child: Text(
                               "View Projects",

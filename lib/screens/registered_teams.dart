@@ -7,8 +7,8 @@ import 'dart:async';
 
 import 'package:hacknu2/services/authentication.dart';
 
-class StudentProjects extends StatefulWidget {
-  StudentProjects({Key key, this.auth, this.userId, this.logoutCallback})
+class RegisteredTeams extends StatefulWidget {
+  RegisteredTeams({Key key, this.auth, this.userId, this.logoutCallback})
       : super(key: key);
 
   final BaseAuth auth;
@@ -16,13 +16,13 @@ class StudentProjects extends StatefulWidget {
   final String userId;
 
   @override
-  State<StatefulWidget> createState() => new _StudentProjectsState();
+  State<StatefulWidget> createState() => new _RegisteredTeamsState();
 }
 
-class _StudentProjectsState extends State<StudentProjects> {
+class _RegisteredTeamsState extends State<RegisteredTeams> {
   //When list is fetched from the firebase we will store it in local list
 
-  List<ProjectModel> _projectList;
+  List<Team> _teamList;
 
   //using this to get access to the Firebase instance
   final FirebaseDatabase _database = FirebaseDatabase.instance;
@@ -33,7 +33,7 @@ class _StudentProjectsState extends State<StudentProjects> {
   StreamSubscription<Event> _onProjectAddedSubscription;
   StreamSubscription<Event> _onProjectChangedSubscription;
 
-  Query _projectQuery;
+  Query _teamQuery;
 
   //bool _isEmailVerified = false;
 
@@ -43,16 +43,16 @@ class _StudentProjectsState extends State<StudentProjects> {
 
     //_checkEmailVerification();
 
-    _projectList = new List();
-    _projectQuery = _database
+    _teamList = new List();
+    _teamQuery = _database
         .reference()
-        .child("projects");
+        .child("teams");
         //.orderByChild("userId")
         //.equalTo(widget.userId);
     _onProjectAddedSubscription =
-        _projectQuery.onChildAdded.listen(onEntryAdded);
+        _teamQuery.onChildAdded.listen(onEntryAdded);
     _onProjectChangedSubscription =
-        _projectQuery.onChildChanged.listen(onEntryChanged);
+        _teamQuery.onChildChanged.listen(onEntryChanged);
   }
 
 //  void _checkEmailVerification() async {
@@ -124,19 +124,19 @@ class _StudentProjectsState extends State<StudentProjects> {
   }
 
   onEntryChanged(Event event) {
-    var oldEntry = _projectList.singleWhere((entry) {
+    var oldEntry = _teamList.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
 
     setState(() {
-      _projectList[_projectList.indexOf(oldEntry)] =
-          ProjectModel.fromSnapShot(event.snapshot);
+      _teamList[_teamList.indexOf(oldEntry)] =
+          Team.fromSnapshot(event.snapshot);
     });
   }
 
   onEntryAdded(Event event) {
     setState(() {
-      _projectList.add(ProjectModel.fromSnapShot(event.snapshot));
+      _teamList.add(Team.fromSnapshot(event.snapshot));
     });
   }
 
@@ -156,19 +156,19 @@ class _StudentProjectsState extends State<StudentProjects> {
       }
       }
    */
-  updateTodo(ProjectModel project ) {
+  updateTodo(Team team ) {
     //Toggle completed
     //todo.completed = !todo.completed;
-    if (project != null) {
-      _database.reference().child("projects").child(project.key).set(project.toMap());
+    if (team != null) {
+      _database.reference().child("teams").child(team.key).set(team.toJson());
     }
   }
 
   deleteTodo(String projectId, int index) {
-    _database.reference().child("projects").child("$projectId").remove().then((_) {
+    _database.reference().child("teams").child("$projectId").remove().then((_) {
       print("Delete $projectId successful");
       setState(() {
-        _projectList.removeAt(index);
+        _teamList.removeAt(index);
       });
     });
   }
@@ -209,34 +209,28 @@ class _StudentProjectsState extends State<StudentProjects> {
       }
    */
   Widget showTodoList() {
-    if (_projectList.length > 0) {
+    if (_teamList.length > 0) {
       return ListView.builder(
           shrinkWrap: true,
-          itemCount: _projectList.length,
+          itemCount: _teamList.length,
           itemBuilder: (BuildContext context, int index) {
-            String projectId = _projectList[index].key;
-            String projectName = _projectList[index].projectName;
-            String minTeam = _projectList[index].minTeam;
-            String maxTeam = _projectList[index].maxTeam;
-            int startDate = _projectList[index].startDate;
-            int endDate = _projectList[index].endDate;
-            String teamDistribution =
-                _projectList[index].teamDistribution;
-            String userId = _projectList[index].userId;
-            String description = _projectList[index].projectDescription;
+            String projectId = _teamList[index].key;
+            String projectName = _teamList[index].teamName;
+            String minTeam = _teamList[index].numberOfStudents;
+            List<dynamic> members = _teamList[index].teamMembers;
             return Dismissible(
               key: Key(projectId),
               background: Container(color: Colors.red),
               onDismissed: (direction) async {
                 deleteTodo(projectId, index);
               },
-              child: ProjectDisplayCard(
-                  projectName: projectName,
-                  minStudents: minTeam,
-                  maxStudents: maxTeam,
-                  teamDistribution: teamDistribution.toString(),
-                  startDate: startDate.toString(),
-                  endDate: endDate.toString(),  description: description,),
+              child: Column(
+                children: <Widget>[
+                  Text("Team Name: $projectName"),
+                  Text("Number of Team Members: $minTeam"),
+                  Text("Team Leader : ${members[0]}" )
+                ],
+              )
             );
           });
     } else {

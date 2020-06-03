@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return new MaterialApp(
-        title: 'Hacknutons',
+        title: 'Nuteams',
         debugShowCheckedModeBanner: false,
         theme: new ThemeData(
           primarySwatch: Colors.deepPurple,

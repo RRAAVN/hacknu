@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:hacknu2/models/studentTodo.dart';
 import 'dart:async';
@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //When list is fetched from the firebase we will store it in local list
 
-  List<Todo> _todoList;
+  List<Team> _memberList;
 
   //using this to get access to the Firebase instance
   final FirebaseDatabase _database = FirebaseDatabase.instance;
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   StreamSubscription<Event> _onTodoAddedSubscription;
   StreamSubscription<Event> _onTodoChangedSubscription;
 
-  Query _todoQuery;
+  Query _memberQuery;
 
   //bool _isEmailVerified = false;
 
@@ -41,15 +41,15 @@ class _HomePageState extends State<HomePage> {
 
     //_checkEmailVerification();
 
-    _todoList = new List();
-    _todoQuery = _database
+    _memberList = new List();
+    _memberQuery = _database
         .reference()
         .child("todo")
         .orderByChild("userId")
         .equalTo(widget.userId);
-    _onTodoAddedSubscription = _todoQuery.onChildAdded.listen(onEntryAdded);
+    _onTodoAddedSubscription = _memberQuery.onChildAdded.listen(onEntryAdded);
     _onTodoChangedSubscription =
-        _todoQuery.onChildChanged.listen(onEntryChanged);
+        _memberQuery.onChildChanged.listen(onEntryChanged);
   }
 
 //  void _checkEmailVerification() async {
@@ -121,19 +121,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   onEntryChanged(Event event) {
-    var oldEntry = _todoList.singleWhere((entry) {
+    var oldEntry = _memberList.singleWhere((entry) {
       return entry.key == event.snapshot.key;
     });
 
     setState(() {
-      _todoList[_todoList.indexOf(oldEntry)] =
-          Todo.fromSnapshot(event.snapshot);
+      _memberList[_memberList.indexOf(oldEntry)] =
+          Team.fromSnapshot(event.snapshot);
     });
   }
 
   onEntryAdded(Event event) {
     setState(() {
-      _todoList.add(Todo.fromSnapshot(event.snapshot));
+      _memberList.add(Team.fromSnapshot(event.snapshot));
     });
   }
 
@@ -148,16 +148,16 @@ class _HomePageState extends State<HomePage> {
 
   addNewTodo(String todoItem) {
     if (todoItem.length > 0) {
-      Todo todo = new Todo(todoItem.toString(), widget.userId, false);
-      _database.reference().child("todo").push().set(todo.toJson());
+     // Team todo = new Team(todoItem.toString(), widget.userId, false);
+      //_database.reference().child("todo").push().set(todo.toJson());
     }
   }
 
-  updateTodo(Todo todo) {
+  updateTodo(Team memberName) {
     //Toggle completed
-    todo.completed = !todo.completed;
-    if (todo != null) {
-      _database.reference().child("todo").child(todo.key).set(todo.toJson());
+   // memberName.completed = !memberName.completed;
+    if (memberName != null) {
+      _database.reference().child("todo").child(memberName.key).set(memberName.toJson());
     }
   }
 
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
     _database.reference().child("todo").child(todoId).remove().then((_) {
       print("Delete $todoId successful");
       setState(() {
-        _todoList.removeAt(index);
+        _memberList.removeAt(index);
       });
     });
   }
@@ -206,15 +206,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget showTodoList() {
-    if (_todoList.length > 0) {
+    if (_memberList.length > 0) {
       return ListView.builder(
           shrinkWrap: true,
-          itemCount: _todoList.length,
+          itemCount: _memberList.length,
           itemBuilder: (BuildContext context, int index) {
-            String todoId = _todoList[index].key;
-            String subject = _todoList[index].subject;
-            bool completed = _todoList[index].completed;
-            String userId = _todoList[index].userId;
+            String todoId = _memberList[index].key;
+         //   String subject= _memberList[index].subject;
+           // bool completed =_memberList[index].completed;
+            String userId = _memberList[index].userId;
             return Dismissible(
               key: Key(todoId),
               background: Container(color: Colors.red),
@@ -222,53 +222,54 @@ class _HomePageState extends State<HomePage> {
                 deleteTodo(todoId, index);
               },
               child: ListTile(
-                title: Text(
-                  subject,
-                  style: TextStyle(fontSize: 20.0),
-                ),
+              //  title: Text(
+             //     subject,
+                //  style: TextStyle(fontSize: 20.0),
+                //),
                 trailing: IconButton(
-                    icon: (completed)
-                        ? Icon(
-                            Icons.done_outline,
-                            color: Colors.green,
-                            size: 20.0,
-                          )
-                        : Icon(Icons.done, color: Colors.grey, size: 20.0),
-                    onPressed: () {
-                      updateTodo(_todoList[index]);
-                    }),
-              ),
-            );
-          });
-    } else {
-      return Center(
-          child: Text(
-        "Welcome. Your list is empty",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 30.0),
-      ));
-    }
-  }
+               //     icon: (completed)
+                     //   ? Icon(
+                          //  Icons.done_outline,
+                        //    color: Colors.green,
+                      //      size: 20.0,
+                    //      )
+                  //      : Icon(Icons.done, color: Colors.grey, size: 20.0),
+                //    onPressed: () {
+              //        updateTodo(_memberList[index]);
+            //        }),
+          //    ),
+        //    );
+      //    });
+    //} else {
+      //return Center(
+        //  child: Text(
+        //"Welcome, Aboard ",
+        //textAlign: TextAlign.center,
+        //style: TextStyle(fontSize: 30.0),
+      //));
+   // }
+  //}
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Flutter login demo'),
-          actions: <Widget>[
-            new FlatButton(
-                child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-                onPressed: signOut)
-          ],
-        ),
-        body: showTodoList(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showAddTodoDialog(context);
-          },
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
-        ));
-  }
-}
+///  @override
+  //Widget build(BuildContext context) {
+    //return new Scaffold(
+      //  appBar: new AppBar(
+        //  title: new Text('Members List'),
+          //actions: <Widget>[
+            //new FlatButton(
+             //   child: new Text('Logout',
+               //     style: new TextStyle(fontSize: 17.0, color: Colors.white)),
+                //onPressed: signOut)
+          //],
+        //),
+        //body: showTodoList(),
+        //floatingActionButton: FloatingActionButton(
+      //    onPressed: () {
+        //    showAddTodoDialog(context);
+          //},
+          //tooltip: 'Increment',
+          //child: Icon(Icons.add),
+        ///));
+  //}
+//}
+                //)); */

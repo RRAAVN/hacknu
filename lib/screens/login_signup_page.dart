@@ -6,6 +6,7 @@ class LoginSignupPage extends StatefulWidget {
 
   final BaseAuth auth;
   final VoidCallback loginCallback;
+  
 
   @override
   State<StatefulWidget> createState() => new _LoginSignupPageState();
@@ -17,7 +18,6 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   String _email;
   String _password;
   String _errorMessage;
-
     bool _isLoginForm;
   bool _isLoading;
 
@@ -42,12 +42,14 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
       try {
         if (_isLoginForm) {
           userId = await widget.auth.signIn(_email, _password);
+          
           print('Signed in: $userId');
         } else {
           userId = await widget.auth.signUp(_email, _password);
           //widget.auth.sendEmailVerification();
           //_showVerifyEmailSentDialog();
-          print('Signed up user: $userId');
+          
+          print('Signed up user: $userId' + _email);
         }
         setState(() {
           _isLoading = false;
@@ -91,7 +93,7 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text('HackNutons'),
+          title: new Text('NuTeams'),
           backgroundColor: Colors.deepPurple,
           centerTitle: true,
         ),

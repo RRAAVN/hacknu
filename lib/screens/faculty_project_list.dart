@@ -233,7 +233,6 @@ class _FacultyProjectsState extends State<FacultyProjects> {
             int endDate = _projectList[index].endDate;
             String teamDistribution =
                 _projectList[index].teamDistribution;
-            String userId = _projectList[index].userId;
             String description = _projectList[index].projectDescription;
             return Dismissible(
               key: Key(projectId),
