@@ -225,10 +225,35 @@ class _RegisteredTeamsState extends State<RegisteredTeams> {
                 deleteTodo(projectId, index);
               },
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text("Team Name: $projectName"),
-                  Text("Number of Team Members: $minTeam"),
-                  Text("Team Leader : ${members[0]}" )
+                  Container(
+                    color: Colors.deepPurple[50],
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text("Team Name: $projectName",style: TextStyle(
+                          fontSize: 20
+                        ),),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.orange[50],
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text("Number of Team Members: $minTeam",style: TextStyle(
+                        fontSize: 20
+                      ),),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text("Team Leader : ${members[0]}",style: TextStyle(
+                      fontSize: 20
+                    ), ),
+                  )
                 ],
               )
             );
