@@ -58,9 +58,7 @@ class _StudentDashboardState extends State<StudentDashBoard> {
           ),
 
          */
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: <Widget>[
             Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +74,7 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                             color: Colors.deepPurple,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
-                              side: BorderSide(color: Colors.orange),
+                              
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -109,7 +107,7 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                             color: Colors.deepPurple,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
-                              side: BorderSide(color: Colors.orange),
+
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -142,7 +140,7 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                     color: Colors.deepPurple,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      side: BorderSide(color: Colors.orange),
+
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -155,6 +153,30 @@ class _StudentDashboardState extends State<StudentDashBoard> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: new SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+
+                    ),
+                    color: Colors.orange,
+                    onPressed: ()=>signOut(),
+                    child: Text(
+                      "Log Out",
+                      style: TextStyle(
+                        fontSize: 20,
                         fontStyle: FontStyle.italic,
                       ),
                     ),

@@ -10,11 +10,10 @@ class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'History',
-          style: TextStyle(color: Colors.black, fontSize: 30.0),
         ),
         flexibleSpace: Container(
           /*
@@ -46,13 +45,13 @@ class _HistoryState extends State<History> {
            */
         child: ListView(
           children: <Widget>[
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
-            ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+        //    ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+          //  ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+            //ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+           // ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+           // ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+           // ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
+           // ProjectDisplayCard(projectName: "XYZ",minStudents: "1",maxStudents: "4",teamDistribution: "Random",startDate: "1/2/2020",endDate: "2/2/2020",),
 
           ],
         ),

@@ -67,7 +67,7 @@ class _ProjectDisplayCardState extends State<ProjectDisplayCard> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Text(
-                              "Course Name:    ",
+                              "Project Name:    ",
                               style: TextStyle(color: Colors.white),
                             ),
                           ],
