@@ -61,7 +61,7 @@
    - Anoop Gupta, [Connect on LinkedIn](https://www.linkedin.com/in/anoop-gupta-2490a2144/ "LinkedIn URL")
    - Ninad Kanchan [Connect on LinkedIn](https://www.linkedin.com/in/ninad-kanchan/ "LinkedIn URL") 
    - Rajat Kaushik [Connect on LinkedIn](https://www.linkedin.com/in/kaushik-rajat/ "LinkedIn URL")
-   - Richard Tony [Follow on Twitter](https://twitter.com/Richtony14?s=08 "Twitter URL")
+   - Richard Tony [Connect on LinkedIn](https://www.linkedin.com/in/richardtony54/ "LinkedIn URL")
    - Vishnu Sharma [Connect on LinkedIn](https://www.linkedin.com/in/vishnu-sharma-55299314b/ "LinkedIn URL")
    
     
